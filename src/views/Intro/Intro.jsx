@@ -1,6 +1,10 @@
 import Footer from "../../components/Footer/Footer";
 
-const Intro = ({ title }) => {
+const Intro = ({ title, startCount }) => {
+  const handleClick = (lang) => {
+    startCount(lang);
+  };
+
   return (
     <>
       <main className="main-content h-100 is-relative">
@@ -20,7 +24,7 @@ const Intro = ({ title }) => {
                 </h1>
                 <h2 className="fs-20-24 has-text-weight-bold">{title.vlca}</h2>
               </div>
-              <a href="/counter/" className="button">
+              <a onClick={() => handleClick("vlca")} className="button">
                 Valencià
               </a>
             </div>
@@ -29,7 +33,7 @@ const Intro = ({ title }) => {
                 Concurso-<span className="is-block fs-40-60">Quiz</span>
               </h1>
               <h2 className="fs-20-24 has-text-weight-bold">{title.spa}</h2>
-              <a href="/counter/" className="button">
+              <a onClick={() => handleClick("spa")} className="button">
                 Castellano
               </a>
             </div>
