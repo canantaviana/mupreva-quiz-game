@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import useDedalo from "./hooks/useDedalo";
 
 function App() {
-  const { loading, fetchData } = useDedalo();
+  const { fetchData, loading, data } = useDedalo();
 
   useEffect(() => {
     const game_id = 2; // TODO: agafar game_id de la URL
@@ -10,7 +10,21 @@ function App() {
     fetchData(game_id);
   }, [fetchData]);
 
-  return <>{loading ? <p>Loading...</p> : <p>Data loaded!</p>}</>;
+  if (loading) {
+    return (
+      <main className="main-content h-100 is-relative">
+        <div className="wrapper h-100 is-flex is-flex-direction-column is-justify-content-center is-align-items-center">
+          <p className="loading has-text-weight-bold is-size-3">
+            <a href="/intro/" className="has-text-white link-dn">
+              Carregant
+            </a>
+          </p>
+        </div>
+      </main>
+    );
+  }
+
+  return <h1>Game</h1>;
 }
 
 export default App;
