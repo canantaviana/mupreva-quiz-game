@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import useDedalo from "./hooks/useDedalo";
+import Game from "./views/Game/Game";
 
 function App() {
   const { fetchData, loading, data } = useDedalo();
@@ -24,7 +25,7 @@ function App() {
     );
   }
 
-  return <h1>Game</h1>;
+  return data ? <Game data={data} /> : null;
 }
 
 export default App;
