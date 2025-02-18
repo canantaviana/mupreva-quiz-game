@@ -1,0 +1,44 @@
+// @include tablet {
+//     .navigation {
+//         .fixed-logo {
+//             display: none;
+//         }
+//         &.fixed {
+//             padding-left: 65px;
+//             position: relative;
+//             .fixed-logo {
+//                 display: block;
+//                 position: absolute;
+//                 height: 35px;
+//                 width: 35px;
+//                 background: url("img/logotip-xmec-cap-positiu.svg") no-repeat;
+//                 background-size: contain;
+//                 left: 0;
+//                 bottom: -5px;
+//                 text-indent: -9999px;
+//                 a {
+//                     display: block;
+//                     height: 100%;
+//                     width: 100%;
+//                 }
+//                 // .home & {
+//                 //     display: none;
+//                 // }
+//             }
+//             // .home & {
+//             //     &::before {
+//             //         content: "";
+//             //         display: block;
+//             //         position: absolute;
+//             //         height: 35px;
+//             //         width: 35px;
+//             //         background: url("img/logotip-xmec-cap-negatiu.svg")
+//             //             no-repeat;
+//             //         background-size: contain;
+//             //         left: 0;
+//             //         bottom: -5px;
+//             //     }
+//             // }
+//         }
+//     }
+// }

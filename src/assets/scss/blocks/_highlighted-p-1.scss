@@ -1,0 +1,13 @@
+.highlighted-p-1 {
+    font-weight: 500;
+    line-height: 1.2;
+    font-size: var(--step-2);
+    max-width: 30ch;
+    text-wrap-style: balance;
+    .text-base > &,
+    .text-base > .column > & {
+        @include desktop {
+            width: 20ch;
+        }
+    }
+}

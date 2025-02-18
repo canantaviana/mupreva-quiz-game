@@ -1,0 +1,159 @@
+// ------
+// GLOBAL
+// ------
+@import "base/_googleFonts_Archivo-swap.scss";
+@import "base/utopia";
+
+// Bulma customize
+// ---------------
+@import "bulma-customize/all";
+
+// Variables
+// ---------
+// @import "variables/hamburger";
+// @import "variables/mfp";
+// @import "variables/slick-slider";
+@import "variables/vars";
+
+// Libraries
+// ---------
+@import "lib/lib";
+
+// Mixins
+// -------
+@import "helpers/mixins";
+
+// Base styles
+// -----------
+@import "base/base";
+
+// --------------
+// Inici CUBE CSS (https://cube.fyi/)
+// --------------
+
+// Composition (https://cube.fyi/composition.html#composition)
+// -----------
+@import "composition/columns";
+@import "composition/layouts";
+// @import "composition/sidebar";
+// @import "composition/grid";
+
+// Utility (https://cube.fyi/utility.html#utility)
+// -------
+// @import "utilities/flex-order";
+@import "utilities/flow";
+@import "utilities/fluid-font-sizes";
+// @import "utilities/full-link";
+@import "utilities/gap";
+@import "utilities/h-100";
+// @import "utilities/is-bordered";
+@import "utilities/is-relative";
+// @import "utilities/letter-spacing";
+// @import "utilities/line-height";
+@import "utilities/link-decoration-none";
+// @import "utilities/of-cover";
+@import "utilities/radius";
+@import "utilities/rounded";
+// @import "utilities/simple-list";
+// @import "utilities/static";
+// @import "utilities/table-responsive";
+// @import "utilities/text-columns";
+// @import "utilities/text-large";
+// @import "utilities/text-small";
+// @import "utilities/text-weight-black";
+// @import "utilities/tt-none";
+// @import "utilities/visible";
+// @import "utilities/w-100";
+@import "utilities/wrapper";
+
+// // Block (https://cube.fyi/block.html#block)
+// // -----
+// // @import "blocks/accordion";
+// // @import "blocks/borders-list";
+// // @import "blocks/boxes-grid";
+// // @import "blocks/boxes-list";
+// // @import "blocks/breadcrumb";
+@import "blocks/button";
+// // @import "blocks/cercador";
+// // @import "blocks/checkradio";
+// // @import "blocks/collapsible";
+@import "blocks/cols-list";
+@import "blocks/comodins";
+@import "blocks/counter";
+@import "blocks/credits";
+// // @import "blocks/dest";
+// // @import "blocks/dest-list";
+// // @import "blocks/download-doc";
+// // @import "blocks/dropdown-menu";
+@import "blocks/footer";
+// // @import "blocks/form";
+// // @import "blocks/form-contact";
+// // @import "blocks/form-help";
+// // @import "blocks/form-label";
+// // @import "blocks/form-login";
+// // @import "blocks/full-bleed";
+// // @import "blocks/gallery";
+@import "blocks/gracies";
+@import "blocks/grafica";
+// // @import "blocks/hamburger";
+// // @import "blocks/highlighted-link";
+// // @import "blocks/highlighted-p-1";
+// // @import "blocks/highlighted-p-2";
+// // @import "blocks/highlighted-p-3";
+// // @import "blocks/icon";
+// // @import "blocks/icon-large";
+// // @import "blocks/ihavecookies";
+// // @import "blocks/iframe";
+@import "blocks/intro";
+// // @import "blocks/lang";
+// // @import "blocks/legal";
+@import "blocks/loading";
+// // @import "blocks/logos";
+// // @import "blocks/main-content";
+// // @import "blocks/main-header";
+// // @import "blocks/main-nav";
+// // @import "blocks/mfp";
+// // @import "blocks/navigation";
+// // @import "blocks/news-form";
+// // @import "blocks/pagination";
+@import "blocks/preguntes";
+// // @import "blocks/related-docs";
+// // @import "blocks/scrolltop";
+// // @import "blocks/search-form";
+// // @import "blocks/share-list";
+// // @import "blocks/sidebar";
+// // @import "blocks/site-logo";
+// // @import "blocks/skip";
+// // @import "blocks/slider";
+// // @import "blocks/social-list";
+// // @import "blocks/tabs";
+@import "blocks/timer";
+// // @import "blocks/toggle";
+// // @import "blocks/video-container";
+
+// // Blocks específics del projecte
+// // ------------------------------
+// // @import "blocks/agenda-home";
+// // @import "blocks/agenda-list";
+// // @import "blocks/calendar";
+// // @import "blocks/bg-gradient";
+// // @import "blocks/block-guia";
+// // @import "blocks/block-item";
+// // @import "blocks/block-item-2";
+// // @import "blocks/block-item-3";
+// // @import "blocks/block-item-4";
+// // @import "blocks/box-destacat";
+// // @import "blocks/box-info";
+// // @import "blocks/bordered-title";
+// // @import "blocks/calendar";
+// // @import "blocks/cta";
+// // @import "blocks/destacats-home";
+// // @import "blocks/error-404";
+// // @import "blocks/external-link";
+// // @import "blocks/intro-text";
+// // @import "blocks/map";
+// // @import "blocks/map-legend";
+// // @import "blocks/form-enviat";
+// // @import "blocks/page-header";
+// // @import "blocks/restaurants-list";
+// // @import "blocks/resultats-cercador";

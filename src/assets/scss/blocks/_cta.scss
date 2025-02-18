@@ -1,0 +1,9 @@
+.cta {
+    border: 1px solid #000;
+    padding: var(--space-s);
+    max-width: max-content;
+    // text-wrap: balance;
+    a {
+        font-weight: 500;
+    }
+}

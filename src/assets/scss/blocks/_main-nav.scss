@@ -1,0 +1,211 @@
+.main-nav {
+    > ul {
+        list-style-type: "";
+        > li {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            &.open > ul {
+                display: block;
+            }
+            > ul {
+                list-style-type: "";
+                display: none;
+            }
+        }
+    }
+    a {
+        text-decoration: none;
+    }
+    .destacat a {
+        color: #fff;
+        background: $blue;
+        border-radius: $radius;
+        padding: var(--space-2xs) var(--space-s);
+        &::after {
+            display: none;
+        }
+        &:hover,
+        &:focus {
+            color: #fff;
+            background-color: darken($blue, 5%);
+        }
+    }
+
+    // Menú mobile
+    @include touch {
+        background: #fff;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 135px;
+        padding: 0 var(--space-l) var(--space-xl) var(--space-l);
+        z-index: 10;
+        a {
+            color: #000;
+        }
+        > div > ul:last-child {
+            div {
+                width: 20px;
+            }
+            img {
+                filter: invert(1);
+            }
+        }
+        > div:last-child {
+            span img {
+                filter: invert(1);
+            }
+        }
+        > ul {
+            margin-bottom: var(--space-xl);
+            font-size: var(--step-1);
+            > li {
+                border-top: 1px solid $grey-light;
+                padding: var(--space-s) var(--space-xs);
+                > a {
+                    flex-grow: 1;
+                    color: #000;
+                }
+                ul {
+                    flex-basis: 100%;
+                    margin-top: var(--space-xs);
+                    font-size: var(--step--1);
+                    font-weight: 300;
+                    li + li {
+                        margin-top: var(--space-xs);
+                    }
+                }
+                &.destacat {
+                    border-top: 0;
+                    padding: 0;
+                }
+            }
+        }
+    }
+
+    // Menú desktop
+    @include desktop {
+        display: block;
+        margin-top: var(--space-l);
+        > ul {
+            display: flex;
+            gap: var(--space-xl);
+            > li {
+                position: relative;
+                > a {
+                    color: #fff;
+                    position: relative;
+                    &::after {
+                        content: "";
+                        display: block;
+                        position: absolute;
+                        width: 100%;
+                        height: 6px;
+                        margin-top: 5px;
+                        background-color: transparent;
+                        transition: background-color 0.05s ease-in;
+                    }
+                    // &[aria-current="page"] {
+                    //     &::after {
+                    //         background-color: red;
+                    //     }
+                    // }
+                }
+                &.open {
+                    position: static;
+                    // > a::after {
+                    //     display: none;
+                    // }
+                }
+                &.open > a,
+                &:hover > a,
+                &:has([aria-current="page"]) > a {
+                    &::after {
+                        background-color: #fff;
+                    }
+                }
+                // &.has-submenu a::after {
+                //     width: calc(100% - 30px);
+                // }
+                > div > ul {
+                    // Espai entre columnes:
+                    --gap: var(--space-xl);
+                    // Número de columnes:
+                    --columns: 4;
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: var(--gap);
+                    font-weight: 500;
+                    line-height: 1.4;
+
+                    > li {
+                        flex-basis: calc(
+                            (100% / var(--columns)) - var(--gap) +
+                                (var(--gap) / var(--columns))
+                        );
+                        @include widescreen {
+                            --columns: 7;
+                            // outline: 1px solid blue;
+                            // Si hi ha més de 5 elements, 2 columnes:
+                            &:has(li:nth-child(n + 6)) {
+                                // outline: 1px solid red;
+                                --columns: 4;
+                                ul {
+                                    column-count: 2;
+                                }
+                            }
+                        }
+                    }
+                    ul {
+                        display: block;
+                        font-weight: 300;
+                        font-size: var(--step--2);
+                        font-family: $family-primary;
+                        margin-top: var(--space-m);
+                        > li + li {
+                            margin-top: var(--space-xs);
+                        }
+                    }
+                }
+            }
+        }
+        // .has-submenu button {
+        //     .home & {
+        //         background-image: url("data:image/svg+xml,%3Csvg width='14' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m13.002 1-6 6L1 1' stroke='%23fff' stroke-width='2' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        //     }
+        // }
+    }
+
+    .has-submenu button {
+        background-color: transparent;
+        background-image: url("data:image/svg+xml,%3Csvg width='14' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m13.002 1-6 6L1 1' stroke='%23fff' stroke-width='2' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        border: none;
+        width: 30px;
+        height: 25px;
+        @include touch {
+            filter: invert(1);
+        }
+    }
+}
+
+// arregla visualització del menú al carregar la pàgina
+@include mobile {
+    .js .main-nav {
+        display: none;
+    }
+}
+.hamburger[aria-expanded="true"] + .main-nav {
+    display: initial;
+}
+// @include desktop {
+//     .js .main-nav {
+//         opacity: 0;
+//         &:has(button[type="button"]) {
+//             opacity: 1;
+//         }
+//     }
+// }

@@ -1,0 +1,18 @@
+.block-item-2 {
+    .column:last-child {
+        @include desktop {
+            flex-basis: auto;
+            flex-grow: 0;
+        }
+    }
+    &:nth-child(even) {
+        > .columns {
+            flex-direction: row-reverse;
+        }
+        .column:last-child p {
+            @include desktop {
+                margin-left: auto;
+            }
+        }
+    }
+}

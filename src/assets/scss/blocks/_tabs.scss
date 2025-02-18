@@ -1,0 +1,164 @@
+.tab-menu {
+    .js & {
+        padding-left: 0;
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        gap: var(--space-2xs) var(--space-l);
+        li {
+            padding: 0;
+        }
+        a {
+            text-decoration: none;
+            &:hover,
+            &:focus {
+                color: $primary !important;
+            }
+            &:hover,
+            &[aria-selected] {
+                outline: 0;
+            }
+        }
+    }
+}
+
+.tab-panel {
+    border-top: 1px solid $primary;
+    // Estils pels elements de text dins el panel
+    h2 {
+        font-size: var(--step--1);
+    }
+    p,
+    ul,
+    ol {
+        font-size: var(--step--1);
+    }
+    table {
+        font-size: var(--step--1);
+        border-collapse: separate;
+        border-spacing: var(--space-2xs);
+        td,
+        th {
+            border: 0;
+            padding: 0;
+        }
+        th {
+            font-family: $family-primary;
+            font-weight: bold;
+            font-size: inherit;
+            padding-right: var(--space-m);
+        }
+        tr + tr {
+            th,
+            td {
+                padding-top: var(--space-s);
+            }
+        }
+    }
+}
+
+// Pestanyes en mòbil
+@include mobile {
+    .js .tab-menu {
+        flex-direction: column;
+        li {
+            display: block;
+            margin-right: 0;
+            margin-top: 1px;
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+    }
+}
+// Pestanyes verticals
+.js .tabbed--vertical {
+    @include mobile {
+        .tab-panel {
+            border-top: 0;
+            padding-left: 0 !important;
+            margin-left: 0 !important;
+            margin-top: var(--space-m);
+        }
+    }
+    @include tablet {
+        display: flex;
+        .tab-menu {
+            flex-direction: column;
+            flex: 1 0 max-content;
+        }
+        .tab-panel {
+            border-top: none;
+            border-left: 1px solid $primary;
+        }
+    }
+}
+
+// fons negre
+.has-background-black {
+    .tab-menu a {
+        color: $white;
+        &::before {
+            border-color: $white;
+        }
+    }
+    .tabbed--vertical {
+        .tab-panel {
+            border-color: $white;
+        }
+    }
+}
+
+// simple tabs
+.tabbed--simple {
+    .tab-menu {
+        gap: 0;
+        flex-wrap: nowrap;
+        @include mobile {
+            flex-direction: inherit;
+        }
+        li {
+            + li {
+                margin-left: -2px;
+            }
+        }
+        a {
+            position: static;
+            border: solid $primary;
+            border-width: 2px 2px 0 2px;
+            &::before {
+                display: none;
+            }
+            &:hover {
+                color: inherit !important;
+                background-color: $primary;
+            }
+            &[aria-selected="true"],
+            &:focus {
+                position: relative;
+                color: #000 !important;
+                &::after {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    height: 2px;
+                    width: 100%;
+                    left: 0;
+                    right: -2px;
+                    bottom: -2px;
+                    top: auto;
+                    background: #fff;
+                }
+            }
+            &:not([aria-selected="true"]) {
+                padding-bottom: var(--space-2xs) !important;
+            }
+        }
+        li:first-child a {
+            border-left-width: 2px;
+        }
+    }
+    .tab-panel {
+        border: 2px solid $primary;
+    }
+}

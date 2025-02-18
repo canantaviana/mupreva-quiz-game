@@ -1,0 +1,19 @@
+.news-form {
+    margin: 0 auto;
+    @include tablet {
+        width: max-content;
+    }
+    input {
+        height: 3.125rem;
+    }
+    button {
+        border: 0;
+        width: 3.125rem;
+    }
+    @include mobile {
+        label:first-of-type::before {
+            transform: none;
+            top: 0.18em;
+        }
+    }
+}

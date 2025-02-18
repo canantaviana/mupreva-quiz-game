@@ -1,0 +1,31 @@
+.block-item-3 {
+    h2 a {
+        color: $text;
+    }
+    > .columns > .column {
+        > div {
+            @include tablet {
+                padding-right: var(--space-s);
+            }
+            @include desktop {
+                padding-right: var(--space-3xl);
+            }
+        }
+        > img {
+            @include mobile {
+                margin-top: var(--space-l);
+            }
+        }
+    }
+
+    &:nth-child(odd) {
+        > .columns {
+            flex-direction: row-reverse;
+            > .column:first-child .column:first-child > * {
+                @include tablet {
+                    padding-left: var(--space-l);
+                }
+            }
+        }
+    }
+}

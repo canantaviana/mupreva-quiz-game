@@ -1,0 +1,18 @@
+footer {
+    ul {
+        li {
+            display: flex;
+            align-items: center;
+            + li {
+                &::before {
+                    content: "";
+                    display: inline-block;
+                    height: 2.6875rem;
+                    width: 1px;
+                    background-color: #fff;
+                    margin-right: var(--space-m);
+                }
+            }
+        }
+    }
+}

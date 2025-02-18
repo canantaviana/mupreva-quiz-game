@@ -1,0 +1,37 @@
+.block-guia {
+    padding-left: var(--space-xl);
+    position: relative;
+    @include mobile {
+        margin-bottom: var(--space-xl);
+    }
+    h2 + .columns .column:not(:last-child) {
+        @include mobile {
+            margin-bottom: var(--space-l);
+        }
+    }
+    &::before {
+        content: "";
+        display: block;
+        height: 4.5rem;
+        width: 6px;
+        background-color: #000;
+        position: absolute;
+        left: 0;
+    }
+    h2,
+    h3 {
+        span {
+            height: 45px;
+            width: 45px;
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: var(--space-xs);
+        }
+    }
+    h3 {
+        span {
+            height: 31px;
+            width: 31px;
+        }
+    }
+}

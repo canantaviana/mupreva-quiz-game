@@ -1,0 +1,19 @@
+:root {
+    --flow: var(--space-s);
+    --fluid-12-18: clamp(0.75rem, 0.6196rem + 0.6522vw, 1.125rem);
+    --fluid-14-18: clamp(0.875rem, 0.788rem + 0.4348vw, 1.125rem);
+    --fluid-14-20: clamp(0.875rem, 0.7446rem + 0.6522vw, 1.25rem);
+    --fluid-14-24: clamp(0.875rem, 0.6576rem + 1.087vw, 1.5rem);
+    --fluid-20-24: clamp(1.25rem, 1.163rem + 0.4348vw, 1.5rem);
+    --fluid-24-34: clamp(1.5rem, 1.2826rem + 1.087vw, 2.125rem);
+    --fluid-26-38: clamp(1.625rem, 1.3641rem + 1.3043vw, 2.375rem);
+    --fluid-30-44: clamp(1.875rem, 1.5707rem + 1.5217vw, 2.75rem);
+    --fluid-30-50: clamp(1.875rem, 1.4402rem + 2.1739vw, 3.125rem);
+    --fluid-40-60: clamp(2.5rem, 2.0652rem + 2.1739vw, 3.75rem);
+    --fluid-64-100: clamp(4rem, 3.2174rem + 3.913vw, 6.25rem);
+    --fluid-112-176: clamp(7rem, 5.6087rem + 6.9565vw, 11rem);
+}
+
+// color focus
+$focus-color: #fff;
+// $focus-color: currentColor;

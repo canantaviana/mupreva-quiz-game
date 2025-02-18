@@ -1,0 +1,35 @@
+.grafica {
+    // --height-a: 3rem;
+    // --height-b: 5rem;
+    // --height-c: 8rem;
+    // --height-d: 2rem;
+
+    &__list {
+        list-style-type: ""; /*https://www.matuzo.at/blog/2023/removing-list-styles-without-affecting-semantics*/
+        display: flex;
+        gap: 0.875rem;
+        margin-bottom: 2rem;
+        @include tablet {
+            transform: scale(1.25);
+            transform-origin: bottom center;
+            margin-bottom: 3rem;
+        }
+        div {
+            width: 2.625rem;
+        }
+    }
+
+    li {
+        counter-increment: list-item;
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 5px;
+        &::before {
+            content: counter(list-item, upper-alpha);
+            text-align: center;
+            color: $primary;
+            font-size: 1.125rem;
+            font-weight: 900;
+        }
+    }
+}

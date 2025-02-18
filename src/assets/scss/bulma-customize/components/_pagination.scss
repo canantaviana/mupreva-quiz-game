@@ -1,0 +1,41 @@
+// $pagination-color: $text-strong !default;
+$pagination-color: $primary;
+// $pagination-border-color: $border !default;
+$pagination-border-color: $grey;
+// $pagination-margin: -0.25rem !default;
+// $pagination-min-width: $control-height !default;
+
+// $pagination-item-font-size: 1em !default;
+$pagination-item-font-size: var(--step-2);
+// $pagination-item-margin: 0.25rem !default;
+$pagination-item-margin: 0.75rem;
+// $pagination-item-padding-left: 0.5em !default;
+// $pagination-item-padding-right: 0.5em !default;
+
+// $pagination-nav-padding-left: 0.75em !default;
+// $pagination-nav-padding-right: 0.75em !default;
+
+// $pagination-hover-color: $link-hover !default;
+// $pagination-hover-border-color: $link-hover-border !default;
+
+// $pagination-focus-color: $link-focus !default;
+// $pagination-focus-border-color: $link-focus-border !default;
+$pagination-focus-border-color: inherit;
+
+// $pagination-active-color: $link-active !default;
+// $pagination-active-border-color: $link-active-border !default;
+
+// $pagination-disabled-color: $text-light !default;
+// $pagination-disabled-background-color: $border !default;
+// $pagination-disabled-border-color: $border !default;
+
+// $pagination-current-color: $link-invert !default;
+// $pagination-current-background-color: $link !default;
+$pagination-current-background-color: $black;
+// $pagination-current-border-color: $link !default;
+$pagination-current-border-color: $pagination-current-background-color;
+
+// $pagination-ellipsis-color: $grey-light !default;
+$pagination-ellipsis-color: $black;
+
+// $pagination-shadow-inset: inset 0 1px 2px rgba($scheme-invert, 0.2) !default;

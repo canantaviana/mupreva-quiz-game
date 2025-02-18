@@ -1,0 +1,22 @@
+.credits {
+    overflow-y: scroll;
+    h2,
+    p,
+    ul {
+        font-size: $size-6;
+    }
+    h2 {
+        color: $primary;
+        font-weight: bold;
+        margin-top: var(--space-l);
+    }
+    ul {
+        --gap: var(--space-2xs);
+    }
+    a:has(> svg) {
+        display: block;
+        position: absolute;
+        top: var(--space-s);
+        right: var(--space-l);
+    }
+}

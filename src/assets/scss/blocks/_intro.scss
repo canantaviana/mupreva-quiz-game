@@ -1,0 +1,28 @@
+.intro {
+    > div:first-child {
+        div::before {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 1px;
+            height: 100%;
+            background-color: #fff;
+            right: calc(var(--space-m) * -1);
+            top: 0;
+        }
+    }
+    h1 {
+        line-height: 1;
+        letter-spacing: -0.63px;
+    }
+    h2 {
+        line-height: 1.4;
+        max-width: 15ch;
+        letter-spacing: -0.47px;
+    }
+}
+// @include desktop {
+//     .wrapper:has(> .intro) {
+//         transform: scale(1.25);
+//     }
+// }

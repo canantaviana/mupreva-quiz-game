@@ -1,0 +1,12 @@
+.text-columns {
+    @include tablet {
+        column-count: 2;
+        column-gap: var(--space-l);
+    }
+    > * + * {
+        margin-top: var(--space-s);
+    }
+    li {
+        break-inside: avoid;
+    }
+}

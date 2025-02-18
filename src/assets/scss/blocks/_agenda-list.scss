@@ -1,0 +1,20 @@
+.agenda-list {
+    // ocultem la tercera imatge en mòbil per un millor layout
+    @include mobile {
+        > .column:nth-child(3) {
+            img {
+                display: none !important;
+            }
+        }
+    }
+    h2 + p {
+        &::before {
+            content: "";
+            height: 1px;
+            width: 5rem;
+            background-color: #000;
+            display: block;
+            margin-bottom: var(--space-s);
+        }
+    }
+}

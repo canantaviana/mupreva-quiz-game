@@ -1,0 +1,22 @@
+.restaurants-list {
+    --gap: var(--space-3xl);
+    row-gap: var(--space-m);
+    li > div {
+        border-bottom: 1px solid #000;
+    }
+    li > div > .columns > .column:nth-child(2) {
+        order: -1;
+        div {
+            @include desktop {
+                align-items: center;
+                height: 100%;
+            }
+        }
+    }
+    a {
+        &[href^="tel"],
+        &[aria-label] {
+            color: $text;
+        }
+    }
+}

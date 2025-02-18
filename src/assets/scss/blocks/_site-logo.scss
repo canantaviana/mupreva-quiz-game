@@ -1,0 +1,12 @@
+.site-logo {
+    font-size: 1rem;
+    line-height: 1;
+    img {
+        @include mobile {
+            width: 6.875rem;
+        }
+    }
+    @include desktop {
+        margin-top: var(--space-s);
+    }
+}

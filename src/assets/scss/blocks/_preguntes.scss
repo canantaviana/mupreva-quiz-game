@@ -1,0 +1,183 @@
+// Images preload
+html {
+    background: url("img/pregunta-bg.png") no-repeat -9999px -9999px,
+        url("img/pregunta-bg@2x.png") no-repeat -9999px -9999px,
+        url("img/caixeta-quiz-resposta.png") no-repeat -9999px -9999px,
+        url("img/caixeta-quiz-resposta@2x.png") no-repeat -9999px -9999px,
+        url("img/caixeta-quiz-resposta-seleccio.png") no-repeat -9999px -9999px,
+        url("img/caixeta-quiz-resposta-seleccio@2x.png") no-repeat -9999px -9999px,
+        url("img/caixeta-quiz-resposta-encert.png") no-repeat -9999px -9999px,
+        url("img/caixeta-quiz-resposta-encert@2x.png") no-repeat -9999px -9999px,
+        url("img/caixeta-quiz-resposta-errada.png") no-repeat -9999px -9999px,
+        url("img/caixeta-quiz-resposta-errada@2x.png") no-repeat -9999px -9999px,
+        url("img/resposta-e-seleccio.png") no-repeat -9999px -9999px,
+        url("img/resposta-e-seleccio@2x.png") no-repeat -9999px -9999px,
+        url("img/resposta-e-encert.png") no-repeat -9999px -9999px,
+        url("img/resposta-e-encert@2x.png") no-repeat -9999px -9999px,
+        url("img/resposta-e-error.png") no-repeat -9999px -9999px,
+        url("img/resposta-e-error@2x.png") no-repeat -9999px -9999px,
+        url("img/resposta-d-seleccio.png") no-repeat -9999px -9999px,
+        url("img/resposta-d-seleccio@2x.png") no-repeat -9999px -9999px,
+        url("img/resposta-d-encert.png") no-repeat -9999px -9999px,
+        url("img/resposta-d-encert@2x.png") no-repeat -9999px -9999px,
+        url("img/resposta-d-error.png") no-repeat -9999px -9999px,
+        url("img/resposta-d-error@2x.png") no-repeat -9999px -9999px;
+}
+
+.preguntes {
+    h2 {
+        background: url("img/pregunta-bg.png") no-repeat;
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            background-image: url("img/pregunta-bg@2x.png");
+        }
+        background-size: 100% 100%;
+        height: var(--fluid-112-176);
+        padding: 1em 12%;
+        @media (min-width: 600px) {
+            margin-bottom: 2rem;
+            background-image: url("img/pregunta-bg-desktop.png");
+            @media (-webkit-min-device-pixel-ratio: 2),
+                (min-resolution: 192dpi) {
+                background-image: url("img/pregunta-bg-desktop@2x.png");
+            }
+        }
+    }
+    &__list {
+        list-style-type: ""; /*https://www.matuzo.at/blog/2023/removing-list-styles-without-affecting-semantics*/
+        @media (min-width: 600px) {
+            display: flex;
+            flex-wrap: wrap;
+            row-gap: 1rem;
+        }
+        li {
+            counter-increment: list-item;
+            @include mobile {
+                margin-top: 0.5rem;
+            }
+            @media (min-width: 600px) {
+                flex-basis: 50%;
+            }
+        }
+        button {
+            width: 100%;
+            height: var(--fluid-64-100);
+            text-wrap: balance;
+            hyphens: auto;
+            border: 0;
+            background: url("img/caixeta-quiz-resposta.png") no-repeat;
+            @media (-webkit-min-device-pixel-ratio: 2),
+                (min-resolution: 192dpi) {
+                background-image: url("img/caixeta-quiz-resposta@2x.png");
+            }
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            padding: 1em 13%;
+            &::before {
+                content: counter(list-item, upper-alpha);
+                display: block;
+                color: $primary;
+                font-size: var(--fluid-26-38);
+                padding-right: var(--space-xs);
+                border-right: 1px solid #979797;
+                font-weight: 900;
+            }
+            &[disabled] {
+                opacity: 0.4;
+            }
+            &.btn-seleccio,
+            &.btn-encert,
+            &.btn-errada {
+                &::before {
+                    color: #fff;
+                    border-right-color: rgba(#fff, 0.4);
+                }
+            }
+            &.btn-seleccio {
+                background-image: url("img/caixeta-quiz-resposta-seleccio.png");
+                @media (-webkit-min-device-pixel-ratio: 2),
+                    (min-resolution: 192dpi) {
+                    background-image: url("img/caixeta-quiz-resposta-seleccio@2x.png");
+                }
+            }
+            &.btn-encert {
+                background-image: url("img/caixeta-quiz-resposta-encert.png");
+                @media (-webkit-min-device-pixel-ratio: 2),
+                    (min-resolution: 192dpi) {
+                    background-image: url("img/caixeta-quiz-resposta-encert@2x.png");
+                }
+            }
+            &.btn-errada {
+                background-image: url("img/caixeta-quiz-resposta-errada.png");
+                @media (-webkit-min-device-pixel-ratio: 2),
+                    (min-resolution: 192dpi) {
+                    background-image: url("img/caixeta-quiz-resposta-errada@2x.png");
+                }
+            }
+        }
+    }
+    @media (min-width: 600px) {
+        li button {
+            background-size: 101% 100%;
+        }
+        li:nth-child(odd) button {
+            background-position-x: 0;
+            background-image: url("img/resposta-e.png");
+            @media (-webkit-min-device-pixel-ratio: 2),
+                (min-resolution: 192dpi) {
+                background-image: url("img/resposta-e@2x.png");
+            }
+            padding: 0.5em 11% 0.5em 17%;
+            &.btn-seleccio {
+                background-image: url("img/resposta-e-seleccio.png");
+                @media (-webkit-min-device-pixel-ratio: 2),
+                    (min-resolution: 192dpi) {
+                    background-image: url("img/resposta-e-seleccio@2x.png");
+                }
+            }
+            &.btn-encert {
+                background-image: url("img/resposta-e-encert.png");
+                @media (-webkit-min-device-pixel-ratio: 2),
+                    (min-resolution: 192dpi) {
+                    background-image: url("img/resposta-e-encert@2x.png");
+                }
+            }
+            &.btn-errada {
+                background-image: url("img/resposta-e-error.png");
+                @media (-webkit-min-device-pixel-ratio: 2),
+                    (min-resolution: 192dpi) {
+                    background-image: url("img/resposta-e-error@2x.png");
+                }
+            }
+        }
+        li:nth-child(even) button {
+            background-position-x: 100%;
+            background-image: url("img/resposta-d.png");
+            @media (-webkit-min-device-pixel-ratio: 2),
+                (min-resolution: 192dpi) {
+                background-image: url("img/resposta-d@2x.png");
+            }
+            padding: 0.5em 17% 0.5em 11%;
+            &.btn-seleccio {
+                background-image: url("img/resposta-d-seleccio.png");
+                @media (-webkit-min-device-pixel-ratio: 2),
+                    (min-resolution: 192dpi) {
+                    background-image: url("img/resposta-d-seleccio@2x.png");
+                }
+            }
+            &.btn-encert {
+                background-image: url("img/resposta-d-encert.png");
+                @media (-webkit-min-device-pixel-ratio: 2),
+                    (min-resolution: 192dpi) {
+                    background-image: url("img/resposta-d-encert@2x.png");
+                }
+            }
+            &.btn-errada {
+                background-image: url("img/resposta-d-error.png");
+                @media (-webkit-min-device-pixel-ratio: 2),
+                    (min-resolution: 192dpi) {
+                    background-image: url("img/resposta-d-error@2x.png");
+                }
+            }
+        }
+    }
+}

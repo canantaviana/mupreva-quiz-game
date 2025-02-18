@@ -1,0 +1,19 @@
+.lang {
+    .active {
+        a {
+            &::after {
+                content: "";
+                display: block;
+                width: 100%;
+                height: 4px;
+                background-color: #fff;
+                @include mobile {
+                    background-color: #000;
+                }
+            }
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}
