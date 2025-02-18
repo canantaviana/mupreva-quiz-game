@@ -3,13 +3,13 @@ import useDedalo from "./hooks/useDedalo";
 import Game from "./views/Game/Game";
 
 function App() {
-  const { fetchData, loading, data } = useDedalo();
+  const { fetchGame, loading, data } = useDedalo();
 
   useEffect(() => {
     const game_id = 2; // TODO: agafar game_id de la URL
 
-    fetchData(game_id);
-  }, [fetchData]);
+    fetchGame(game_id);
+  }, [fetchGame]);
 
   if (loading) {
     return (
@@ -25,7 +25,7 @@ function App() {
     );
   }
 
-  return data ? <Game data={data} /> : null;
+  return data ? <Game gameData={data} /> : null;
 }
 
 export default App;

@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
-
 import { getArCalls } from "../utils/getArCalls";
+import { cleanData, cleanAnswers } from "../utils/cleanData";
 
 const API_URL =
   "https://pre-dedalo.mupreva.org/dedalo6-pre/publication/server_api/v1/json/";
@@ -11,15 +11,8 @@ function useDedalo() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const fetchData = useCallback(async (game_id) => {
+  const fetchData = async (body) => {
     setLoading(true);
-
-    const body = {
-      dedalo_get: "combi",
-      db_name: API_DB_NAME,
-      code: API_CODE,
-      ar_calls: JSON.stringify(getArCalls(game_id)),
-    };
 
     try {
       const response = await fetch(API_URL, {
@@ -37,76 +30,44 @@ function useDedalo() {
 
       const data = await response.json();
       console.log(data);
-
-      const cleanedData = cleanData(data);
-
-      setData(cleanedData);
+      return data;
     } catch (err) {
       console.log(err.message);
     } finally {
       setLoading(false);
     }
-  }, []);
+  };
 
-  function cleanData(rawData) {
-    const gameData = {
-      backgroundImage: { default: "images/plato3.jpg" },
-      creditsImage: { default: "images/creditos.jpg" },
-      questions: { default: {} },
-      levels: { default: [] },
-      title: { default: "Mupreva" },
-      startingLevel: {},
+  const fetchGame = useCallback(async (game_id) => {
+    const body = {
+      dedalo_get: "combi",
+      db_name: API_DB_NAME,
+      code: API_CODE,
+      ar_calls: JSON.stringify(getArCalls(game_id)),
     };
 
-    const result = rawData.result;
+    const data = await fetchData(body);
+    const cleanedData = cleanData(data);
+    setData(cleanedData);
+  }, []);
 
-    if (!result || result.length != 2) {
-      return null;
-    }
+  const fetchQuestion = async (question, language) => {
+    const body = {
+      dedalo_get: "records",
+      db_name: API_DB_NAME,
+      code: API_CODE,
+      table: "game",
+      ar_fields: ["section_id", "type_data", "title"],
+      lang: "lg-" + language,
+      sql_filter: 'parent_data like "%\\"' + question.id + '\\"%"',
+    };
 
-    result.forEach((langElement) => {
-      const lang = langElement.id;
-      const { children_data, images_data, title } = langElement.result[0];
+    const data = await fetchData(body);
+    const cleanedData = cleanAnswers(data);
+    setData(cleanedData);
+  };
 
-      gameData.title[lang] = title;
-
-      images_data.forEach((imgElement) => {
-        if (imgElement.title === "fondo") {
-          gameData.backgroundImage[lang] = imgElement.image;
-        } else if (imgElement.title === "creditos") {
-          gameData.creditsImage[lang] = imgElement.image;
-        }
-      });
-
-      gameData.questions[lang] = {};
-
-      gameData.levels[lang] = children_data
-        .filter((levelElement) => levelElement.type_data === '["2"]')
-        .map((levelElement) => {
-          gameData.questions[lang][levelElement.section_id] =
-            levelElement.children_data
-              .filter(
-                (questionElement) => questionElement.type_data === '["3"]'
-              )
-              .map((questionElement) => {
-                return {
-                  question: questionElement.title,
-                  id: questionElement.section_id,
-                };
-              });
-          return {
-            title: levelElement.title,
-            id: levelElement.section_id,
-          };
-        });
-
-      gameData.startingLevel[lang] = gameData.levels[lang][0].id;
-    });
-
-    return gameData;
-  }
-
-  return { data, loading, fetchData };
+  return { data, loading, fetchGame, fetchQuestion };
 }
 
 export default useDedalo;
