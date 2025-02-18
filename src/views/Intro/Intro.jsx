@@ -2,9 +2,9 @@ import Footer from "../../components/Footer/Footer";
 import imatgeMonedaDenari from "@/assets/img/imatge-moneda-denari.png";
 import imatgeMonedaDenari2x from "@/assets/img/imatge-moneda-denari@2x.png";
 
-const Intro = ({ title, startCount }) => {
+const Intro = ({ title, startGame }) => {
   const handleClick = (lang) => {
-    startCount(lang);
+    startGame(lang);
   };
 
   return (

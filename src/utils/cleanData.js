@@ -5,7 +5,6 @@ export const cleanData = (rawData) => {
     questions: { default: {} },
     levels: { default: [] },
     title: { default: "Mupreva" },
-    startingLevel: {},
   };
 
   const result = rawData.result;
@@ -46,9 +45,8 @@ export const cleanData = (rawData) => {
           title: levelElement.title,
           id: levelElement.section_id,
         };
-      });
-
-    gameData.startingLevel[lang] = gameData.levels[lang][0].id;
+      })
+      .sort((a, b) => a.id - b.id);
   });
 
   return gameData;
