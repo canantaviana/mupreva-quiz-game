@@ -1,4 +1,6 @@
 import Footer from "../../components/Footer/Footer";
+import imatgeMonedaDenari from "@/assets/img/imatge-moneda-denari.png";
+import imatgeMonedaDenari2x from "@/assets/img/imatge-moneda-denari@2x.png";
 
 const Intro = ({ title, startCount }) => {
   const handleClick = (lang) => {
@@ -10,8 +12,8 @@ const Intro = ({ title, startCount }) => {
       <main className="main-content h-100 is-relative">
         <div className="wrapper h-100 is-flex is-flex-direction-column is-justify-content-center is-align-items-center flow--l">
           <img
-            src="/media/img/imatge-moneda-denari.png"
-            srcSet="/media/img/imatge-moneda-denari@2x.png 2x"
+            src={imatgeMonedaDenari}
+            srcSet={`${imatgeMonedaDenari2x} 2x`}
             alt=""
             width="95"
             height="93"

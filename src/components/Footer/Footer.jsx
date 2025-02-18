@@ -1,3 +1,5 @@
+import iconaMupreva from "@/assets/img/icona-mupreva.svg";
+
 const Footer = () => {
   return (
     <footer className="is-relative has-text-centered link-dn pb-7">
@@ -7,7 +9,7 @@ const Footer = () => {
           className="is-block flow--s has-text-weight-semibold is-size-7"
         >
           <img
-            src="/media/img/icona-mupreva.svg"
+            src={iconaMupreva}
             alt=""
             width="30"
             height="48"

@@ -1,40 +1,40 @@
 @font-face {
-    font-family: "Archivo";
-    font-style: normal;
-    font-weight: 400;
-    src: url(../../fonts/Archivo);
-    src: local("Archivo"),
-        url(../../fonts/Archivo?#iefix) format("embedded-opentype"),
-        url(../../fonts/Archivo.svg#Archivo) format("svg");
-    font-display: swap;
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 400;
+  src: url(src/assets/fonts/Archivo);
+  src: local("Archivo"),
+    url(src/assets/fonts/Archivo?#iefix) format("embedded-opentype"),
+    url(src/assets/fonts/Archivo.svg#Archivo) format("svg");
+  font-display: swap;
 }
 
 @font-face {
-    font-family: "Archivo";
-    font-style: normal;
-    font-weight: 600;
-    src: url(../../fonts/Archivo-normal-600.woff) format("woff"),
-        url(../../fonts/Archivo-normal-600.woff2) format("woff2"),
-        url(../../fonts/Archivo-normal-600.ttf) format("truetype");
-    font-display: swap;
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 600;
+  src: url(src/assets/fonts/Archivo-normal-600.woff) format("woff"),
+    url(src/assets/fonts/Archivo-normal-600.woff2) format("woff2"),
+    url(src/assets/fonts/Archivo-normal-600.ttf) format("truetype");
+  font-display: swap;
 }
 
 @font-face {
-    font-family: "Archivo";
-    font-style: normal;
-    font-weight: 700;
-    src: url(../../fonts/Archivo-normal-700.woff) format("woff"),
-        url(../../fonts/Archivo-normal-700.woff2) format("woff2"),
-        url(../../fonts/Archivo-normal-700.ttf) format("truetype");
-    font-display: swap;
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 700;
+  src: url(src/assets/fonts/Archivo-normal-700.woff) format("woff"),
+    url(src/assets/fonts/Archivo-normal-700.woff2) format("woff2"),
+    url(src/assets/fonts/Archivo-normal-700.ttf) format("truetype");
+  font-display: swap;
 }
 
 @font-face {
-    font-family: "Archivo";
-    font-style: normal;
-    font-weight: 900;
-    src: url(../../fonts/Archivo-normal-900.woff2) format("woff2"),
-        url(../../fonts/Archivo-normal-900.ttf) format("truetype"),
-        url(../../fonts/Archivo-normal-900.woff) format("woff");
-    font-display: swap;
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 900;
+  src: url(src/assets/fonts/Archivo-normal-900.woff2) format("woff2"),
+    url(src/assets/fonts/Archivo-normal-900.ttf) format("truetype"),
+    url(src/assets/fonts/Archivo-normal-900.woff) format("woff");
+  font-display: swap;
 }
