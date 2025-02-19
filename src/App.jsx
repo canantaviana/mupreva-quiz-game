@@ -15,10 +15,8 @@ function App() {
     return (
       <main className="main-content h-100 is-relative">
         <div className="wrapper h-100 is-flex is-flex-direction-column is-justify-content-center is-align-items-center">
-          <p className="loading has-text-weight-bold is-size-3">
-            <a href="/intro/" className="has-text-white link-dn">
-              Carregant
-            </a>
+          <p className="loading has-text-weight-bold is-size-3 has-text-white">
+            Carregant
           </p>
         </div>
       </main>

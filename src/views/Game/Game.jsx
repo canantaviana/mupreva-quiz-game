@@ -4,30 +4,26 @@ import GameHeader from "@/components/GameHeader/GameHeader";
 import QuestionCard from "@/components/QuestionCard/QuestionCard";
 
 const Game = ({ levels, questions, language }) => {
-  const { data, fetchAnswers } = useDedalo();
+  const { answers, correctAnswerId, loading, fetchAnswers } = useDedalo();
   const [levelCount, setLevelCount] = useState(1);
-  const firstLevelId = levels[0].id;
   const [currentQuestion, setCurrentQuestion] = useState(
-    questions[firstLevelId]
+    questions[levels[0].id]
   );
-  const [answers, setAnswers] = useState(null);
 
   useEffect(() => {
     fetchAnswers(currentQuestion, language);
   }, [fetchAnswers, currentQuestion, language]);
 
-  useEffect(() => {
-    data && setAnswers(Object.values(data.answers));
-  }, [data]);
-
-  if (!data || !answers) {
-    return null;
-  }
+  if (loading) return null;
 
   return (
     <>
       <GameHeader levelCount={levelCount} maxLevel={levels.length} />
-      <QuestionCard currentQuestion={currentQuestion} answers={answers} />
+      <QuestionCard
+        currentQuestion={currentQuestion}
+        answers={answers}
+        correctAnswerId={correctAnswerId}
+      />
     </>
   );
 };

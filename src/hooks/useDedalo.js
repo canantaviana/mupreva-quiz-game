@@ -8,12 +8,12 @@ const API_DB_NAME = "web_tangible_heritage";
 const API_CODE = "lsi8wM5s$4KueñwkoPwgs";
 
 function useDedalo() {
+  const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [answers, setAnswers] = useState(null);
+  const [correctAnswerId, setCorrectAnswerId] = useState(null);
 
   const fetchData = async (body) => {
-    setLoading(true);
-
     try {
       const response = await fetch(API_URL, {
         method: "POST",
@@ -63,11 +63,13 @@ function useDedalo() {
     };
 
     const data = await fetchData(body);
-    const cleanedData = cleanAnswers(data);
-    setData(cleanedData);
+    const cleanedAnswers = cleanAnswers(data);
+    setAnswers(Object.values(cleanedAnswers.answers));
+    // TODO: canviar l'ordre de les respostes perquè sigui aleatori
+    setCorrectAnswerId(cleanedAnswers.correct);
   }, []);
 
-  return { data, loading, fetchGame, fetchAnswers };
+  return { data, loading, answers, correctAnswerId, fetchGame, fetchAnswers };
 }
 
 export default useDedalo;
