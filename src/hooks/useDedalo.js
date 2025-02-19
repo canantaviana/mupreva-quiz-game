@@ -51,7 +51,7 @@ function useDedalo() {
     setData(cleanedData);
   }, []);
 
-  const fetchQuestion = async (question, language) => {
+  const fetchAnswers = useCallback(async (question, language) => {
     const body = {
       dedalo_get: "records",
       db_name: API_DB_NAME,
@@ -65,9 +65,9 @@ function useDedalo() {
     const data = await fetchData(body);
     const cleanedData = cleanAnswers(data);
     setData(cleanedData);
-  };
+  }, []);
 
-  return { data, loading, fetchGame, fetchQuestion };
+  return { data, loading, fetchGame, fetchAnswers };
 }
 
 export default useDedalo;
