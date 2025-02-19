@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import useDedalo from "./hooks/useDedalo";
-import Game from "./views/Game/Game";
+import ViewManager from "./views/ViewManager/ViewManager";
 
 function App() {
   const { fetchGame, loading, data } = useDedalo();
@@ -25,7 +25,7 @@ function App() {
     );
   }
 
-  return data ? <Game gameData={data} /> : null;
+  return data ? <ViewManager gameData={data} /> : null;
 }
 
 export default App;
