@@ -7,6 +7,7 @@ const QuestionCard = ({
   answers,
   correctAnswerId,
   checkResult,
+  hintIds,
 }) => {
   const [answerStates, setAnswerStates] = useState(
     answers.map((answer) => ({ id: answer.id, state: "idle" }))
@@ -18,6 +19,18 @@ const QuestionCard = ({
       answers.map((answer) => ({ id: answer.id, state: "idle" }))
     );
   }, [answers]);
+
+  useEffect(() => {
+    setAnswerStates((prev) =>
+      prev.map((answerState) => {
+        if (hintIds.includes(answerState.id)) {
+          return { ...answerState, state: "disabled" };
+        } else {
+          return answerState;
+        }
+      })
+    );
+  }, [hintIds]);
 
   const handleAnswerClick = async (selectedAnswerId) => {
     setDisabledButtons(true);

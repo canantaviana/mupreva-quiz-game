@@ -6,7 +6,7 @@ import useGame from "@/hooks/useGame";
 import useCountdown from "../../hooks/useCountdown";
 import ProgressCircle from "../ProgressCircle/ProgressCircle";
 
-const GameHeader = ({ levelCount, maxLevel }) => {
+const GameHeader = ({ levelCount, maxLevel, activateFiftyFifty }) => {
   const { setCurrentView } = useGame();
   const { count, addTime } = useCountdown(30, onTimeUp);
   const [timeWildcardUsed, setTimeWildcardUsed] = useState(false);
@@ -19,6 +19,11 @@ const GameHeader = ({ levelCount, maxLevel }) => {
   function useTimeWildcard() {
     addTime(30);
     setTimeWildcardUsed(true);
+  }
+
+  function useFiftyFiftyWildcard() {
+    setFiftyFiftyWildcardUsed(true);
+    activateFiftyFifty();
   }
 
   return (
@@ -46,7 +51,11 @@ const GameHeader = ({ levelCount, maxLevel }) => {
           </span>
           <ul className="comodins is-flex gap-4">
             <li>
-              <button type="button" disabled={fiftyFiftyWildcardUsed}>
+              <button
+                type="button"
+                onClick={useFiftyFiftyWildcard}
+                disabled={fiftyFiftyWildcardUsed}
+              >
                 <img
                   src={comodi1}
                   width="37"
