@@ -1,8 +1,18 @@
 import comodi1 from "@/assets/img/comodi-1.svg";
 import comodi2 from "@/assets/img/comodi-2.svg";
 import comodi3 from "@/assets/img/comodi-3.svg";
+import useGame from "@/hooks/useGame";
+import useCountdown from "../../hooks/useCountdown";
+import ProgressCircle from "../ProgressCircle/ProgressCircle";
 
 const GameHeader = ({ levelCount, maxLevel }) => {
+  const { setCurrentView } = useGame();
+  const count = useCountdown(30, onTimeUp);
+
+  function onTimeUp() {
+    setCurrentView("thanks");
+  }
+
   return (
     <header className="is-relative">
       <h1 className="is-sr-only">Monedes antigues de la Península Ibèrica</h1>
@@ -17,27 +27,9 @@ const GameHeader = ({ levelCount, maxLevel }) => {
               id="counter"
               className="counter-text has-text-primary has-text-weight-bold fs-30-44"
             >
-              30
+              {count}
             </div>
-            <div className="timer">
-              <svg
-                width="30"
-                height="30"
-                viewBox="0 0 30 30"
-                className="is-block"
-              >
-                <circle cx="15" cy="15" r="12.5" fill="none" strokeWidth="5" />
-                <circle
-                  id="progress-circle"
-                  cx="15"
-                  cy="15"
-                  r="12.5"
-                  fill="none"
-                  strokeWidth="5"
-                  transform="rotate(-90 15 15)"
-                />
-              </svg>
-            </div>
+            <ProgressCircle count={count} />
           </div>
         </div>
         <div className="is-flex gap-5 is-align-items-center is-justify-content-center py-4">
@@ -46,7 +38,7 @@ const GameHeader = ({ levelCount, maxLevel }) => {
           </span>
           <ul className="comodins is-flex gap-4">
             <li>
-              <button type="button" disabled>
+              <button type="button">
                 <img
                   src={comodi1}
                   width="37"
@@ -56,7 +48,7 @@ const GameHeader = ({ levelCount, maxLevel }) => {
               </button>
             </li>
             <li>
-              <button type="button" className="active">
+              <button type="button">
                 <img
                   src={comodi2}
                   width="33"
