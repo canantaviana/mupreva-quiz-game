@@ -1,3 +1,4 @@
+import { useState } from "react";
 import comodi1 from "@/assets/img/comodi-1.svg";
 import comodi2 from "@/assets/img/comodi-2.svg";
 import comodi3 from "@/assets/img/comodi-3.svg";
@@ -7,10 +8,17 @@ import ProgressCircle from "../ProgressCircle/ProgressCircle";
 
 const GameHeader = ({ levelCount, maxLevel }) => {
   const { setCurrentView } = useGame();
-  const count = useCountdown(30, onTimeUp);
+  const { count, addTime } = useCountdown(30, onTimeUp);
+  const [timeWildcardUsed, setTimeWildcardUsed] = useState(false);
+  const [fiftyFiftyWildcardUsed, setFiftyFiftyWildcardUsed] = useState(false);
 
   function onTimeUp() {
     setCurrentView("thanks");
+  }
+
+  function useTimeWildcard() {
+    addTime(30);
+    setTimeWildcardUsed(true);
   }
 
   return (
@@ -38,7 +46,7 @@ const GameHeader = ({ levelCount, maxLevel }) => {
           </span>
           <ul className="comodins is-flex gap-4">
             <li>
-              <button type="button">
+              <button type="button" disabled={fiftyFiftyWildcardUsed}>
                 <img
                   src={comodi1}
                   width="37"
@@ -58,7 +66,11 @@ const GameHeader = ({ levelCount, maxLevel }) => {
               </button>
             </li>
             <li>
-              <button type="button">
+              <button
+                type="button"
+                onClick={useTimeWildcard}
+                disabled={timeWildcardUsed}
+              >
                 <img
                   src={comodi3}
                   width="25"

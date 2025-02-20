@@ -15,7 +15,11 @@ const useCountdown = (initialCount, onFinish) => {
     }
   }, [count, onFinish]);
 
-  return count;
+  const addTime = (time) => {
+    setCount((prevCount) => prevCount + time);
+  };
+
+  return { count, addTime };
 };
 
 export default useCountdown;

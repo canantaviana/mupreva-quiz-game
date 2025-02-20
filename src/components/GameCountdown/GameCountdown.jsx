@@ -1,7 +1,7 @@
 import useCountdown from "../../hooks/useCountdown";
 
 const GameCountdown = ({ action }) => {
-  const count = useCountdown(3, action);
+  const { count } = useCountdown(3, action);
 
   return (
     <main className="main-content h-100 is-relative">
