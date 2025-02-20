@@ -20,7 +20,7 @@ const AnswerOption = ({ answer, correctAnswerId, evaluate }) => {
     const timedReveal = () => {
       setStatus(isCorrect ? "correct" : "incorrect");
       if (!isCorrect) setIsRevealed(true);
-      setTimeout(() => evaluate(isCorrect), 2000);
+      setTimeout(() => evaluate(isCorrect), 1250);
     };
     setTimeout(timedReveal, 1250);
   };

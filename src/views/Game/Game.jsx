@@ -4,10 +4,16 @@ import useGame from "@/hooks/useGame";
 import GameHeader from "@/components/GameHeader/GameHeader";
 import QuestionCard from "@/components/QuestionCard/QuestionCard";
 
-const Game = ({ levels, questions, language }) => {
+const Game = ({ questions }) => {
   const { answers, correctAnswerId, loading, fetchAnswers } = useDedalo();
-  const { resetAnswers } = useGame();
-  const [levelCount, setLevelCount] = useState(1);
+  const {
+    resetAnswers,
+    setCurrentView,
+    language,
+    levels,
+    levelCount,
+    setLevelCount,
+  } = useGame();
   const [currentQuestion, setCurrentQuestion] = useState(
     questions[levels[0].id]
   );
@@ -22,7 +28,7 @@ const Game = ({ levels, questions, language }) => {
       setCurrentQuestion(questions[levels[levelCount].id]);
       setLevelCount((prev) => prev + 1);
     } else {
-      alert(levels[levelCount - 1].title);
+      setCurrentView("thanks");
     }
   };
 

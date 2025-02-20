@@ -1,12 +1,12 @@
 import { useState } from "react";
-import Intro from "../Intro/Intro";
-import GameCountdown from "../../components/GameCountdown/GameCountdown";
-import Game from "../Game/Game";
+import useGame from "@/hooks/useGame";
+import Intro from "@/views/Intro/Intro";
+import GameCountdown from "@/components/GameCountdown/GameCountdown";
+import Game from "@/views/Game/Game";
+import Thanks from "@/views/Thanks/Thanks";
 
 const ViewManager = ({ gameData }) => {
-  const [language, setLanguage] = useState("vlca");
-  const [currentView, setCurrentView] = useState("intro");
-  const [levels, setLevels] = useState([]);
+  const { currentView, setCurrentView, setLanguage, setLevels } = useGame();
   const [questions, setQuestions] = useState({});
 
   const startGame = (lang) => {
@@ -35,9 +35,9 @@ const ViewManager = ({ gameData }) => {
         <GameCountdown action={() => setCurrentView("game")} />
       )}
 
-      {currentView === "game" && (
-        <Game levels={levels} questions={questions} language={language} />
-      )}
+      {currentView === "game" && <Game questions={questions} />}
+
+      {currentView === "thanks" && <Thanks />}
     </>
   );
 };
