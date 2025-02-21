@@ -14,7 +14,7 @@ const Game = ({ questions }) => {
   const [currentQuestion, setCurrentQuestion] = useState(
     questions[levels[0].id]
   );
-  const { count, addTime, resetTime } = useCountdown(30, onTimeUp);
+  const { count, total, addTime, resetTime } = useCountdown(30, onTimeUp);
   const [hintIds, setHintIds] = useState([]);
   const [timeWildcardUsed, setTimeWildcardUsed] = useState(false);
   const [fiftyWildcardUsed, setFiftyWildcardUsed] = useState(false);
@@ -63,6 +63,7 @@ const Game = ({ questions }) => {
     <>
       <GameHeader
         count={count}
+        total={total}
         timeUsed={timeWildcardUsed}
         useTime={useTimeWildcard}
         fiftyUsed={fiftyWildcardUsed}

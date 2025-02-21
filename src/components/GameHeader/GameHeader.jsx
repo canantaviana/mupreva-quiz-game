@@ -6,6 +6,7 @@ import ProgressCircle from "../ProgressCircle/ProgressCircle";
 
 const GameHeader = ({
   count,
+  total,
   timeUsed,
   useTime,
   fiftyUsed,
@@ -27,11 +28,14 @@ const GameHeader = ({
           <div className="is-flex is-align-items-center gap-2">
             <div
               id="counter"
-              className="counter-text has-text-primary has-text-weight-bold fs-30-44"
+              className={`counter-text has-text-weight-bold fs-30-44 ${
+                count > 5 ? "has-text-primary" : ""
+              }`}
+              style={{ color: count > 5 ? "#b292b8" : "red" }}
             >
               {count}
             </div>
-            <ProgressCircle count={count} />
+            <ProgressCircle count={count} total={total} />
           </div>
         </div>
         <div className="is-flex gap-5 is-align-items-center is-justify-content-center py-4">

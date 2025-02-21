@@ -1,4 +1,4 @@
-const ProgressCircle = ({ count }) => {
+const ProgressCircle = ({ count, total }) => {
   const radius = 12.5;
   const circumference = 2 * Math.PI * radius;
 
@@ -16,7 +16,8 @@ const ProgressCircle = ({ count }) => {
           transform="rotate(-90 15 15)"
           style={{
             strokeDasharray: circumference,
-            strokeDashoffset: circumference * (1 - count / 30),
+            strokeDashoffset: circumference * (1 - count / total),
+            stroke: count > 5 ? "#b292b8" : "red",
           }}
         />
       </svg>

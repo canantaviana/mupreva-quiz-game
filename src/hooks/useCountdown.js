@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 
 const useCountdown = (initialCount, onFinish) => {
   const [count, setCount] = useState(initialCount);
+  const [total, setTotal] = useState(initialCount);
 
   useEffect(() => {
     if (count > 0) {
@@ -17,13 +18,15 @@ const useCountdown = (initialCount, onFinish) => {
 
   const addTime = (time) => {
     setCount((prevCount) => prevCount + time);
+    setTotal((prevTotal) => prevTotal + time);
   };
 
   const resetTime = useCallback(() => {
     setCount(initialCount);
-  }, [initialCount]);
+    setTotal(initialCount);
+  }, [initialCount, setCount, setTotal]);
 
-  return { count, addTime, resetTime };
+  return { count, total, addTime, resetTime };
 };
 
 export default useCountdown;
