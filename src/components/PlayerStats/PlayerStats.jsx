@@ -1,15 +1,20 @@
+import useTranslations from "@/hooks/useTranslations";
+
 const PlayerStats = ({ setShowStats }) => {
+  const t = useTranslations();
+
   const stats = {
     a: "1.2rem",
     b: "2.8rem",
     c: "2.2rem",
     d: "3.8rem",
   };
+
   return (
     <main className="main-content h-100 is-relative">
       <div className="wrapper h-100 is-flex is-flex-direction-column is-justify-content-center is-align-items-center flow--l">
         <div className="grafica">
-          <h2 className="is-sr-only">Percentatge per cada resposta</h2>
+          <h2 className="is-sr-only">{t("stats-sr-description")}</h2>
           <ol className="grafica__list">
             <li>
               <div
@@ -17,7 +22,7 @@ const PlayerStats = ({ setShowStats }) => {
                 style={{ height: stats.a }}
               ></div>
               <span className="has-text-weight-white has-text-weight-bold has-text-centered">
-                <span className="is-sr-only">Resposta A: </span>12%
+                <span className="is-sr-only">{t("answer")} A: </span>12%
               </span>
             </li>
             <li>
@@ -26,7 +31,7 @@ const PlayerStats = ({ setShowStats }) => {
                 style={{ height: stats.b }}
               ></div>
               <span className="has-text-weight-white has-text-weight-bold has-text-centered">
-                <span className="is-sr-only">Resposta B: </span>28%
+                <span className="is-sr-only">{t("answer")} B: </span>28%
               </span>
             </li>
             <li>
@@ -35,7 +40,7 @@ const PlayerStats = ({ setShowStats }) => {
                 style={{ height: stats.c }}
               ></div>
               <span className="has-text-weight-white has-text-weight-bold has-text-centered">
-                <span className="is-sr-only">Resposta C: </span>22%
+                <span className="is-sr-only">{t("answer")} C: </span>22%
               </span>
             </li>
             <li>
@@ -44,7 +49,7 @@ const PlayerStats = ({ setShowStats }) => {
                 style={{ height: stats.d }}
               ></div>
               <span className="has-text-weight-white has-text-weight-bold has-text-centered">
-                <span className="is-sr-only">Resposta D: </span>38%
+                <span className="is-sr-only">{t("answer")} D: </span>38%
               </span>
             </li>
           </ol>

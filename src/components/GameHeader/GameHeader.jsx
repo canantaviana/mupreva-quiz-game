@@ -3,6 +3,7 @@ import comodi2 from "@/assets/img/comodi-2.svg";
 import comodi3 from "@/assets/img/comodi-3.svg";
 import useGame from "@/hooks/useGame";
 import ProgressCircle from "../ProgressCircle/ProgressCircle";
+import useTranslations from "@/hooks/useTranslations";
 
 const GameHeader = ({
   count,
@@ -14,15 +15,18 @@ const GameHeader = ({
   setShowStats,
   showStats,
 }) => {
-  const { levelCount, levels } = useGame();
+  const { levelCount, levels, title, language } = useGame();
+  const t = useTranslations();
 
   return (
     <header className="is-relative">
-      <h1 className="is-sr-only">Monedes antigues de la Península Ibèrica</h1>
+      <h1 className="is-sr-only">{title[language]}</h1>
       <div className="wrapper">
         <div className="is-flex is-justify-content-space-between is-align-items-center py-5">
           <span className="has-text-weight-semibold fs-14-18">
-            <span className="has-text-primary">Nivell {levelCount}/</span>
+            <span className="has-text-primary">
+              {t("level")} {levelCount}/
+            </span>
             {levels.length}
           </span>
           <div className="is-flex is-align-items-center gap-2">
@@ -40,7 +44,7 @@ const GameHeader = ({
         </div>
         <div className="is-flex gap-5 is-align-items-center is-justify-content-center py-4">
           <span className="has-text-weight-semibold has-text-primary fs-12-18">
-            Comodins:
+            {t("wildcards")}:
           </span>
           <ul className="comodins is-flex gap-4">
             <li>

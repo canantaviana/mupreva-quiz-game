@@ -1,8 +1,10 @@
-import Footer from "../../components/Footer/Footer";
+import useGame from "@/hooks/useGame";
+import Footer from "@/components/Footer/Footer";
 import imatgeMonedaDenari from "@/assets/img/imatge-moneda-denari.png";
 import imatgeMonedaDenari2x from "@/assets/img/imatge-moneda-denari@2x.png";
 
-const Intro = ({ title, startGame }) => {
+const Intro = ({ startGame }) => {
+  const { title } = useGame();
   const handleClick = (lang) => {
     startGame(lang);
   };

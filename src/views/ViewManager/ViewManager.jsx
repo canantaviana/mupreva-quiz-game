@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useGame from "@/hooks/useGame";
 import Intro from "@/views/Intro/Intro";
 import GameCountdown from "@/components/GameCountdown/GameCountdown";
@@ -7,8 +7,13 @@ import Thanks from "@/views/Thanks/Thanks";
 import Credits from "@/views/Credits/Credits";
 
 const ViewManager = ({ gameData }) => {
-  const { currentView, setCurrentView, setLanguage, setLevels } = useGame();
+  const { currentView, setCurrentView, setLanguage, setLevels, setTitle } =
+    useGame();
   const [questions, setQuestions] = useState({});
+
+  useEffect(() => {
+    setTitle(gameData.title);
+  }, [setTitle, gameData.title]);
 
   const startGame = (lang) => {
     setLanguage(lang);
@@ -28,13 +33,9 @@ const ViewManager = ({ gameData }) => {
 
   return (
     <>
-      {currentView === "intro" && (
-        <Intro title={gameData.title} startGame={startGame} />
-      )}
+      {currentView === "intro" && <Intro startGame={startGame} />}
 
-      {currentView === "countdown" && (
-        <GameCountdown action={() => setCurrentView("game")} />
-      )}
+      {currentView === "countdown" && <GameCountdown />}
 
       {currentView === "game" && <Game questions={questions} />}
 
