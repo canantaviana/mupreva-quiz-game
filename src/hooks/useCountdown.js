@@ -1,30 +1,43 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 
 const useCountdown = (initialCount, onFinish) => {
   const [count, setCount] = useState(initialCount);
   const [total, setTotal] = useState(initialCount);
+  const startTimeRef = useRef(Date.now());
+  const endTimeRef = useRef(Date.now() + initialCount * 1000);
 
   useEffect(() => {
-    if (count > 0) {
-      const timer = setInterval(() => {
-        if (count === 1 && onFinish) onFinish();
+    const updateCount = () => {
+      const now = Date.now();
+      const remainingTime = Math.max(
+        0,
+        Math.round((endTimeRef.current - now) / 1000)
+      );
+      setCount(remainingTime);
 
-        setCount((prevCount) => prevCount - 1);
-      }, 1000);
+      if (remainingTime === 0 && onFinish) {
+        onFinish();
+      }
+    };
 
-      return () => clearInterval(timer);
-    }
-  }, [count, onFinish]);
+    updateCount();
+    const timer = setInterval(updateCount, 1000);
+    return () => clearInterval(timer);
+  }, [onFinish]);
 
   const addTime = (time) => {
-    setCount((prevCount) => prevCount + time);
     setTotal((prevTotal) => prevTotal + time);
+    endTimeRef.current += time * 1000;
+    setCount((prevCount) => prevCount + time);
   };
 
   const resetTime = useCallback(() => {
+    const now = Date.now();
+    startTimeRef.current = now;
+    endTimeRef.current = now + initialCount * 1000;
     setCount(initialCount);
     setTotal(initialCount);
-  }, [initialCount, setCount, setTotal]);
+  }, [initialCount]);
 
   return { count, total, addTime, resetTime };
 };
