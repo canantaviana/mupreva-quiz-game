@@ -4,6 +4,7 @@ import Intro from "@/views/Intro/Intro";
 import GameCountdown from "@/components/GameCountdown/GameCountdown";
 import Game from "@/views/Game/Game";
 import Thanks from "@/views/Thanks/Thanks";
+import Credits from "@/views/Credits/Credits";
 
 const ViewManager = ({ gameData }) => {
   const { currentView, setCurrentView, setLanguage, setLevels } = useGame();
@@ -38,6 +39,7 @@ const ViewManager = ({ gameData }) => {
       {currentView === "game" && <Game questions={questions} />}
 
       {currentView === "thanks" && <Thanks />}
+      {currentView === "credits" && <Credits />}
     </>
   );
 };

@@ -4,7 +4,15 @@ import comodi3 from "@/assets/img/comodi-3.svg";
 import useGame from "@/hooks/useGame";
 import ProgressCircle from "../ProgressCircle/ProgressCircle";
 
-const GameHeader = ({ count, timeUsed, useTime, fiftyUsed, useFifty }) => {
+const GameHeader = ({
+  count,
+  timeUsed,
+  useTime,
+  fiftyUsed,
+  useFifty,
+  setShowStats,
+  showStats,
+}) => {
   const { levelCount, levels } = useGame();
 
   return (
@@ -42,7 +50,11 @@ const GameHeader = ({ count, timeUsed, useTime, fiftyUsed, useFifty }) => {
               </button>
             </li>
             <li>
-              <button type="button">
+              <button
+                type="button"
+                onClick={() => setShowStats(true)}
+                className={showStats ? "active" : ""}
+              >
                 <img
                   src={comodi2}
                   width="33"

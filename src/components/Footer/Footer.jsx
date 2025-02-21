@@ -1,6 +1,8 @@
+import useGame from "@/hooks/useGame";
 import iconaMupreva from "@/assets/img/icona-mupreva.svg";
 
 const Footer = () => {
+  const { setCurrentView } = useGame();
   return (
     <footer className="is-relative has-text-centered link-dn pb-7">
       <div className="wrapper flow--l">
@@ -19,10 +21,10 @@ const Footer = () => {
         </a>
         <ul className="is-size-7 has-text-weight-semibold is-flex is-align-items-center is-justify-content-center gap-5">
           <li>
-            <a href="/credits/">Crèdits</a>
+            <a onClick={() => setCurrentView("credits")}>Crèdits</a>
           </li>
           <li>
-            <a href="#">Créditos</a>
+            <a onClick={() => setCurrentView("credits")}>Créditos</a>
           </li>
         </ul>
       </div>

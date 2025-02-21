@@ -5,6 +5,7 @@ import useCountdown from "@/hooks/useCountdown";
 
 import GameHeader from "@/components/GameHeader/GameHeader";
 import QuestionCard from "@/components/QuestionCard/QuestionCard";
+import PlayerStats from "@/components/PlayerStats/PlayerStats";
 
 const Game = ({ questions }) => {
   const { answers, correctAnswerId, loading, fetchAnswers } = useDedalo();
@@ -17,11 +18,12 @@ const Game = ({ questions }) => {
   const [hintIds, setHintIds] = useState([]);
   const [timeWildcardUsed, setTimeWildcardUsed] = useState(false);
   const [fiftyWildcardUsed, setFiftyWildcardUsed] = useState(false);
+  const [showStats, setShowStats] = useState(false);
 
   useEffect(() => {
     fetchAnswers(currentQuestion, language);
     resetTime();
-  }, [fetchAnswers, currentQuestion, language]);
+  }, [fetchAnswers, currentQuestion, language, resetTime]);
 
   function onTimeUp() {
     setCurrentView("thanks");
@@ -65,14 +67,20 @@ const Game = ({ questions }) => {
         useTime={useTimeWildcard}
         fiftyUsed={fiftyWildcardUsed}
         useFifty={useFiftyWildcard}
+        setShowStats={setShowStats}
+        showStats={showStats}
       />
-      <QuestionCard
-        currentQuestion={currentQuestion}
-        answers={answers}
-        correctAnswerId={correctAnswerId}
-        checkResult={checkResult}
-        hintIds={hintIds}
-      />
+      {showStats ? (
+        <PlayerStats setShowStats={setShowStats} />
+      ) : (
+        <QuestionCard
+          currentQuestion={currentQuestion}
+          answers={answers}
+          correctAnswerId={correctAnswerId}
+          checkResult={checkResult}
+          hintIds={hintIds}
+        />
+      )}
     </>
   );
 };

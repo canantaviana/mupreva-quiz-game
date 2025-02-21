@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 const useCountdown = (initialCount, onFinish) => {
   const [count, setCount] = useState(initialCount);
@@ -19,9 +19,9 @@ const useCountdown = (initialCount, onFinish) => {
     setCount((prevCount) => prevCount + time);
   };
 
-  const resetTime = () => {
+  const resetTime = useCallback(() => {
     setCount(initialCount);
-  };
+  }, [initialCount]);
 
   return { count, addTime, resetTime };
 };
