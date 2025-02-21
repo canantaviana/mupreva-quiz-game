@@ -19,7 +19,11 @@ const useCountdown = (initialCount, onFinish) => {
     setCount((prevCount) => prevCount + time);
   };
 
-  return { count, addTime };
+  const resetTime = () => {
+    setCount(initialCount);
+  };
+
+  return { count, addTime, resetTime };
 };
 
 export default useCountdown;

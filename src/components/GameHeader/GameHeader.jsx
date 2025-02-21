@@ -1,30 +1,11 @@
-import { useState } from "react";
 import comodi1 from "@/assets/img/comodi-1.svg";
 import comodi2 from "@/assets/img/comodi-2.svg";
 import comodi3 from "@/assets/img/comodi-3.svg";
 import useGame from "@/hooks/useGame";
-import useCountdown from "../../hooks/useCountdown";
 import ProgressCircle from "../ProgressCircle/ProgressCircle";
 
-const GameHeader = ({ levelCount, maxLevel, activateFiftyFifty }) => {
-  const { setCurrentView } = useGame();
-  const { count, addTime } = useCountdown(30, onTimeUp);
-  const [timeWildcardUsed, setTimeWildcardUsed] = useState(false);
-  const [fiftyFiftyWildcardUsed, setFiftyFiftyWildcardUsed] = useState(false);
-
-  function onTimeUp() {
-    setCurrentView("thanks");
-  }
-
-  function useTimeWildcard() {
-    addTime(30);
-    setTimeWildcardUsed(true);
-  }
-
-  function useFiftyFiftyWildcard() {
-    setFiftyFiftyWildcardUsed(true);
-    activateFiftyFifty();
-  }
+const GameHeader = ({ count, timeUsed, useTime, fiftyUsed, useFifty }) => {
+  const { levelCount, levels } = useGame();
 
   return (
     <header className="is-relative">
@@ -33,7 +14,7 @@ const GameHeader = ({ levelCount, maxLevel, activateFiftyFifty }) => {
         <div className="is-flex is-justify-content-space-between is-align-items-center py-5">
           <span className="has-text-weight-semibold fs-14-18">
             <span className="has-text-primary">Nivell {levelCount}/</span>
-            {maxLevel}
+            {levels.length}
           </span>
           <div className="is-flex is-align-items-center gap-2">
             <div
@@ -51,11 +32,7 @@ const GameHeader = ({ levelCount, maxLevel, activateFiftyFifty }) => {
           </span>
           <ul className="comodins is-flex gap-4">
             <li>
-              <button
-                type="button"
-                onClick={useFiftyFiftyWildcard}
-                disabled={fiftyFiftyWildcardUsed}
-              >
+              <button type="button" onClick={useFifty} disabled={fiftyUsed}>
                 <img
                   src={comodi1}
                   width="37"
@@ -75,11 +52,7 @@ const GameHeader = ({ levelCount, maxLevel, activateFiftyFifty }) => {
               </button>
             </li>
             <li>
-              <button
-                type="button"
-                onClick={useTimeWildcard}
-                disabled={timeWildcardUsed}
-              >
+              <button type="button" onClick={useTime} disabled={timeUsed}>
                 <img
                   src={comodi3}
                   width="25"
