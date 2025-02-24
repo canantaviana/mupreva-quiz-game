@@ -9,8 +9,14 @@ import PlayerStats from "@/components/PlayerStats/PlayerStats";
 
 const Game = ({ questions }) => {
   const { answers, correctAnswerId, loading, fetchAnswers } = useDedalo();
-  const { setCurrentView, language, levels, levelCount, setLevelCount } =
-    useGame();
+  const {
+    setCurrentView,
+    language,
+    levels,
+    levelCount,
+    setLevelCount,
+    setWin,
+  } = useGame();
   const [currentQuestion, setCurrentQuestion] = useState(
     questions[levels[0].id]
   );
@@ -41,6 +47,11 @@ const Game = ({ questions }) => {
 
   function checkResult(isCorrect) {
     if (isCorrect) {
+      if (levelCount === levels.length) {
+        setWin(true);
+        setCurrentView("thanks");
+        return;
+      }
       setCurrentQuestion(questions[levels[levelCount].id]);
       setLevelCount((prev) => prev + 1);
     } else {

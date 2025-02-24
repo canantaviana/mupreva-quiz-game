@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import AnswerOption from "../AnswerOption/AnswerOption";
 import { delay } from "@/utils/lib";
 
+const SHOW_RESULT_DELAY_MS = 1000;
+const NEXT_QUESTION_DELAY_MS = 2000;
+
 const QuestionCard = ({
   currentQuestion,
   answers,
@@ -44,7 +47,7 @@ const QuestionCard = ({
 
     setAnswerStates(updatedStates);
 
-    await delay(1000);
+    await delay(SHOW_RESULT_DELAY_MS);
 
     const isCorrect = selectedAnswerId === correctAnswerId;
     const finalStates = updatedStates.map((answerState) => {
@@ -58,7 +61,7 @@ const QuestionCard = ({
     });
     setAnswerStates(finalStates);
 
-    await delay(1000);
+    await delay(NEXT_QUESTION_DELAY_MS);
 
     setDisabledButtons(false);
     checkResult(isCorrect);

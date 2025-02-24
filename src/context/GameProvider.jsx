@@ -7,6 +7,7 @@ const GameProvider = ({ children }) => {
   const [levels, setLevels] = useState([]);
   const [levelCount, setLevelCount] = useState(1);
   const [title, setTitle] = useState({});
+  const [win, setWin] = useState(false);
 
   return (
     <GameContext.Provider
@@ -21,6 +22,8 @@ const GameProvider = ({ children }) => {
         setLevelCount,
         title,
         setTitle,
+        win,
+        setWin,
       }}
     >
       {children}
