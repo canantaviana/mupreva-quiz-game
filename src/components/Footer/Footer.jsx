@@ -1,13 +1,16 @@
 import useGame from "@/hooks/useGame";
+import useTranslations from "@/hooks/useTranslations";
 import iconaMupreva from "@/assets/img/icona-mupreva.svg";
 
 const Footer = () => {
+  const t = useTranslations();
+
   const { setCurrentView } = useGame();
   return (
     <footer className="is-relative has-text-centered link-dn pb-7">
       <div className="wrapper flow--l">
         <a
-          href="#"
+          href="https://mupreva.org/"
           className="is-block flow--s has-text-weight-semibold is-size-7"
         >
           <img
@@ -17,14 +20,14 @@ const Footer = () => {
             height="48"
             className="is-block mx-auto mb-3"
           />
-          Museu de Prehistòria de València
+          {t("museum")}
         </a>
         <ul className="is-size-7 has-text-weight-semibold is-flex is-align-items-center is-justify-content-center gap-5">
           <li>
-            <a onClick={() => setCurrentView("credits")}>Crèdits</a>
+            <a onClick={() => setCurrentView("credits_vlca")}>Crèdits</a>
           </li>
           <li>
-            <a onClick={() => setCurrentView("credits")}>Créditos</a>
+            <a onClick={() => setCurrentView("credits_spa")}>Créditos</a>
           </li>
         </ul>
       </div>

@@ -40,7 +40,12 @@ const ViewManager = ({ gameData }) => {
       {currentView === "game" && <Game questions={questions} />}
 
       {currentView === "thanks" && <Thanks />}
-      {currentView === "credits" && <Credits />}
+      {currentView === "credits_vlca" && (
+        <Credits lang={"vlca"} content={gameData.credits.vlca} />
+      )}
+      {currentView === "credits_spa" && (
+        <Credits lang={"spa"} content={gameData.credits.spa} />
+      )}
     </>
   );
 };

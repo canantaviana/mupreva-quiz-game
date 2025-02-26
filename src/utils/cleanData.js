@@ -5,6 +5,7 @@ export const cleanData = (rawData) => {
     questions: { default: {} },
     levels: { default: [] },
     title: { default: "Mupreva" },
+    credits: { default: "" },
   };
 
   const result = rawData.result;
@@ -15,9 +16,11 @@ export const cleanData = (rawData) => {
 
   result.forEach((langElement) => {
     const lang = langElement.id;
-    const { children_data, images_data, title } = langElement.result[0];
+    const { children_data, images_data, title, description } =
+      langElement.result[0];
 
     gameData.title[lang] = title;
+    gameData.credits[lang] = description;
 
     images_data.forEach((imgElement) => {
       if (imgElement.title === "fondo") {
