@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
 import { getArCalls } from "../utils/getArCalls";
 import { cleanData, cleanAnswers } from "../utils/cleanData";
+import useGame from "@/hooks/useGame";
 
 const API_URL =
   "https://pre-dedalo.mupreva.org/dedalo6-pre/publication/server_api/v1/json/";
@@ -12,6 +13,7 @@ function useDedalo() {
   const [data, setData] = useState(null);
   const [answers, setAnswers] = useState(null);
   const [correctAnswerId, setCorrectAnswerId] = useState(null);
+  const { cheater } = useGame();
 
   const fetchData = async (body) => {
     try {
@@ -64,9 +66,15 @@ function useDedalo() {
 
     const data = await fetchData(body);
     const cleanedAnswers = cleanAnswers(data);
-    setAnswers(Object.values(cleanedAnswers.answers));
-    // TODO: canviar l'ordre de les respostes perquè sigui aleatori
     setCorrectAnswerId(cleanedAnswers.correct);
+    if (cheater) {
+      setAnswers(Object.values(cleanedAnswers.answers));
+    } else {
+      const answers = Object.values(cleanedAnswers.answers).sort(
+        () => Math.random() - 0.5
+      );
+      setAnswers(answers);
+    }
   }, []);
 
   return { data, loading, answers, correctAnswerId, fetchGame, fetchAnswers };

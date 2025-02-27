@@ -5,7 +5,7 @@ import { useWindowSize } from "react-use";
 import Confetti from "react-confetti";
 
 const Thanks = () => {
-  const { levels, levelCount, win } = useGame();
+  const { levels, levelCount, win, gameUrlPath } = useGame();
   const t = useTranslations();
   const { width, height } = useWindowSize();
 
@@ -22,7 +22,7 @@ const Thanks = () => {
             {t("level")}: {levels[levelCount - 1].title}
           </p>
           <div className="has-text-centered">
-            <a href="/" className="button button--lg">
+            <a href={gameUrlPath} className="button button--lg">
               OK
             </a>
           </div>

@@ -19,6 +19,7 @@ export default defineConfig({
       "@": path.resolve(import.meta.dirname, "/src"),
       "../../node_modules": path.resolve(import.meta.dirname, "node_modules"),
       node_modules: path.resolve(import.meta.dirname, "node_modules"),
+      "src/assets": path.resolve(import.meta.dirname, "/src/assets"),
     },
   },
 });

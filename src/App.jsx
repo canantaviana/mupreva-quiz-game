@@ -1,15 +1,24 @@
 import { useEffect } from "react";
 import useDedalo from "./hooks/useDedalo";
+import useGame from "./hooks/useGame";
 import ViewManager from "./views/ViewManager/ViewManager";
 
 function App() {
   const { fetchGame, loading, data } = useDedalo();
+  const { setGameUrlPath, setCheater } = useGame();
 
   useEffect(() => {
-    const game_id = 2; // TODO: agafar game_id de la URL
+    setGameUrlPath(window.location.pathname);
+    const urlPath = window.location.pathname.split("/");
+    if (urlPath.includes("cheat")) {
+      console.log("cheater!");
+      setCheater(true);
+      urlPath.splice(urlPath.indexOf("cheat"), 1);
+    }
+    const game_id = urlPath[urlPath.length - 1];
 
     fetchGame(game_id);
-  }, [fetchGame]);
+  }, [fetchGame, setGameUrlPath]);
 
   if (loading) {
     return (
