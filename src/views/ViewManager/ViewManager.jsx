@@ -5,6 +5,7 @@ import GameCountdown from "@/components/GameCountdown/GameCountdown";
 import Game from "@/views/Game/Game";
 import Thanks from "@/views/Thanks/Thanks";
 import Credits from "@/views/Credits/Credits";
+import defaultBackground from "@/assets/img/background.jpg";
 
 const ViewManager = ({ gameData }) => {
   const { currentView, setCurrentView, setLanguage, setLevels, setTitle } =
@@ -13,7 +14,10 @@ const ViewManager = ({ gameData }) => {
 
   useEffect(() => {
     setTitle(gameData.title);
-  }, [setTitle, gameData.title]);
+    window.document.body.style.backgroundImage = gameData.backgroundImage.vlca
+      ? `url(${gameData.backgroundImage.vlca})`
+      : `url(${defaultBackground})`;
+  }, [setTitle, gameData]);
 
   const startGame = (lang) => {
     setLanguage(lang);
@@ -33,7 +37,9 @@ const ViewManager = ({ gameData }) => {
 
   return (
     <>
-      {currentView === "intro" && <Intro startGame={startGame} />}
+      {currentView === "intro" && (
+        <Intro startGame={startGame} logo={gameData.logoImage.vlca} />
+      )}
 
       {currentView === "countdown" && <GameCountdown />}
 

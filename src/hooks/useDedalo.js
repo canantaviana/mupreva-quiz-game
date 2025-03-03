@@ -31,7 +31,7 @@ function useDedalo() {
       if (!response.ok) throw new Error("Failed to fetch data");
 
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       return data;
     } catch (err) {
       console.log(err.message);
@@ -53,29 +53,34 @@ function useDedalo() {
     setData(cleanedData);
   }, []);
 
-  const fetchAnswers = useCallback(async (question, language) => {
-    const body = {
-      dedalo_get: "records",
-      db_name: API_DB_NAME,
-      code: API_CODE,
-      table: "game",
-      ar_fields: ["section_id", "type_data", "title"],
-      lang: "lg-" + language,
-      sql_filter: 'parent_data like "%\\"' + question.id + '\\"%"',
-    };
+  const fetchAnswers = useCallback(
+    async (question, language) => {
+      const body = {
+        dedalo_get: "records",
+        db_name: API_DB_NAME,
+        code: API_CODE,
+        table: "game",
+        ar_fields: ["section_id", "type_data", "title"],
+        lang: "lg-" + language,
+        sql_filter: 'parent_data like "%\\"' + question.id + '\\"%"',
+      };
 
-    const data = await fetchData(body);
-    const cleanedAnswers = cleanAnswers(data);
-    setCorrectAnswerId(cleanedAnswers.correct);
-    if (cheater) {
-      setAnswers(Object.values(cleanedAnswers.answers));
-    } else {
-      const answers = Object.values(cleanedAnswers.answers).sort(
+      const data = await fetchData(body);
+      const cleanedAnswers = cleanAnswers(data);
+      setCorrectAnswerId(cleanedAnswers.correct);
+
+      if (cheater) {
+        setAnswers(Object.values(cleanedAnswers.answers));
+        return;
+      }
+
+      const randomAnswers = Object.values(cleanedAnswers.answers).sort(
         () => Math.random() - 0.5
       );
-      setAnswers(answers);
-    }
-  }, []);
+      setAnswers(randomAnswers);
+    },
+    [cheater]
+  );
 
   return { data, loading, answers, correctAnswerId, fetchGame, fetchAnswers };
 }

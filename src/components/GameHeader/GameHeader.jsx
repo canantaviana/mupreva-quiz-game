@@ -15,11 +15,14 @@ const GameHeader = ({
   setShowStats,
   showStats,
 }) => {
-  const { levelCount, levels, title, language } = useGame();
+  const { levelCount, levels, title, language, disabledButtons } = useGame();
   const t = useTranslations();
 
   return (
-    <header className="is-relative">
+    <header
+      className="is-relative"
+      style={disabledButtons ? { pointerEvents: "none" } : null}
+    >
       <h1 className="is-sr-only">{title[language]}</h1>
       <div className="wrapper">
         <div className="is-flex is-justify-content-space-between is-align-items-center py-5">

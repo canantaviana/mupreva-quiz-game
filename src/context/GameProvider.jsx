@@ -11,6 +11,7 @@ const GameProvider = ({ children }) => {
   const [gameUrlPath, setGameUrlPath] = useState("");
   const [cheater, setCheater] = useState(false);
   const [gameId, setGameId] = useState("");
+  const [disabledButtons, setDisabledButtons] = useState(false);
 
   return (
     <GameContext.Provider
@@ -33,6 +34,8 @@ const GameProvider = ({ children }) => {
         setCheater,
         gameId,
         setGameId,
+        disabledButtons,
+        setDisabledButtons,
       }}
     >
       {children}

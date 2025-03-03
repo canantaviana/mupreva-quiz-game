@@ -1,11 +1,13 @@
 export const cleanData = (rawData) => {
+  const IMAGE_URL = "https://pre-dedalo.mupreva.org";
+
   const gameData = {
-    backgroundImage: { default: "images/plato3.jpg" },
-    creditsImage: { default: "images/creditos.jpg" },
-    questions: { default: {} },
-    levels: { default: [] },
-    title: { default: "Mupreva" },
-    credits: { default: "" },
+    backgroundImage: {},
+    logoImage: {},
+    questions: {},
+    levels: {},
+    title: {},
+    credits: {},
   };
 
   const result = rawData.result;
@@ -24,9 +26,9 @@ export const cleanData = (rawData) => {
 
     images_data.forEach((imgElement) => {
       if (imgElement.title === "fondo") {
-        gameData.backgroundImage[lang] = imgElement.image;
-      } else if (imgElement.title === "creditos") {
-        gameData.creditsImage[lang] = imgElement.image;
+        gameData.backgroundImage[lang] = IMAGE_URL + imgElement.image;
+      } else if (imgElement.title === "logo") {
+        gameData.logoImage[lang] = IMAGE_URL + imgElement.image;
       }
     });
 

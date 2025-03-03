@@ -11,7 +11,6 @@ function App() {
     setGameUrlPath(window.location.pathname);
     const urlPath = window.location.pathname.split("/");
     if (urlPath.includes("cheat")) {
-      console.log("cheater!");
       setCheater(true);
       urlPath.splice(urlPath.indexOf("cheat"), 1);
     }
@@ -19,7 +18,7 @@ function App() {
     setGameId(game_id);
 
     fetchGame(game_id);
-  }, [fetchGame, setGameUrlPath]);
+  }, [fetchGame, setGameUrlPath, setGameId, setCheater]);
 
   if (loading) {
     return (

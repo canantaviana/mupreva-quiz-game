@@ -1,12 +1,12 @@
 {
-  "name": null,
-  "short_name": null,
-  "description": null,
+  "name": "Mupreva Game",
+  "short_name": "Mupreva Game",
+  "description": "Mupreva Game",
   "dir": "auto",
-  "lang": "en-US",
+  "lang": "ca-ES",
   "display": "standalone",
   "orientation": "any",
-  "start_url": "/?homescreen=1",
+  "start_url": ".",
   "background_color": "#fff",
   "theme_color": "#fff",
   "icons": [

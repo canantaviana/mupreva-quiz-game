@@ -25,47 +25,6 @@ const Credits = ({ lang, content }) => {
           {t("credits")}
         </h1>
         {parse(editedContent, { trim: true })}
-        {/* <p className="has-text-primary has-text-weight-bold mt-7">
-          Concurs interactiu “Històries en miniatura&quot;
-        </p>
-        <h2>Idea i continguts</h2>
-        <ul>
-          <li>Manuel Gozalbes Fernández de Palencia</li>
-          <li>Ángel Sánchez Molina</li>
-        </ul>
-        <h2>Desenvolupament i disseny aplicació</h2>
-        <p>Render Comunicación S.L.</p>
-        <h2>Producció</h2>
-        <p>Museu de Prehistòria de València </p>
-        <h2>Traducció al valencià</h2>
-        <p>Unitat de Normalització Lingüística de la Diputació de València</p>
-        <h2>Agraïments</h2>
-        <ul className="cols-list-3">
-          <li>Begonya Soler</li>
-          <li>Fernando Bardisa Rodríguez</li>
-          <li>Vicente Juan Berenguer García</li>
-          <li>Raquel Fernández García</li>
-          <li>Carmen García-Rayo García</li>
-          <li>Juan Vicente Gonzalez Cantó</li>
-          <li>Aida Lleó Dols</li>
-          <li>Antonio Martínez Ibáñez</li>
-          <li>María del Mar Meseguer Escrivà</li>
-          <li>Alba Pérez Martínez</li>
-          <li>Emilio Peris Blanch</li>
-          <li>Pedro Ramos Pérez</li>
-          <li>José Manuel Torregrosa Yago</li>
-        </ul>
-
-        <p className="mt-5">
-          <small>
-            <span className="is-block has-text-primary has-text-weight-bold">
-              Nota dels productors
-            </span>
-            Aquest interactiu ha estat produït per a l&apos;exposició
-            &quot;Històries en miniatura&quot; amb una finalitat exclusivament
-            educativa.
-          </small>
-        </p> */}
         <img
           src={logoDivalMupreva3x}
           alt="Diputació de València"

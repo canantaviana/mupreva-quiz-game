@@ -17,8 +17,7 @@ const QuestionCard = ({
   const [answerStates, setAnswerStates] = useState(
     answers.map((answer) => ({ id: answer.id, state: "idle" }))
   );
-  const { gameId } = useGame();
-  const [disabledButtons, setDisabledButtons] = useState(false);
+  const { gameId, disabledButtons, setDisabledButtons } = useGame();
 
   useEffect(() => {
     setAnswerStates(
