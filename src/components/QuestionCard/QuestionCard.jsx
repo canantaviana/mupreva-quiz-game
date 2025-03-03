@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import AnswerOption from "../AnswerOption/AnswerOption";
 import { delay } from "@/utils/lib";
+import data_io from "../../utils/data_io";
+import useGame from "@/hooks/useGame";
 
 const SHOW_RESULT_DELAY_MS = 1000;
 const NEXT_QUESTION_DELAY_MS = 2000;
@@ -15,6 +17,7 @@ const QuestionCard = ({
   const [answerStates, setAnswerStates] = useState(
     answers.map((answer) => ({ id: answer.id, state: "idle" }))
   );
+  const { gameId } = useGame();
   const [disabledButtons, setDisabledButtons] = useState(false);
 
   useEffect(() => {
@@ -36,6 +39,7 @@ const QuestionCard = ({
   }, [hintIds]);
 
   const handleAnswerClick = async (selectedAnswerId) => {
+    data_io.guardar_respuesta(currentQuestion.id, selectedAnswerId, gameId);
     setDisabledButtons(true);
     const updatedStates = answerStates.map((answerState) => {
       if (answerState.id === selectedAnswerId) {

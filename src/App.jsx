@@ -5,7 +5,7 @@ import ViewManager from "./views/ViewManager/ViewManager";
 
 function App() {
   const { fetchGame, loading, data } = useDedalo();
-  const { setGameUrlPath, setCheater } = useGame();
+  const { setGameUrlPath, setCheater, setGameId } = useGame();
 
   useEffect(() => {
     setGameUrlPath(window.location.pathname);
@@ -16,6 +16,7 @@ function App() {
       urlPath.splice(urlPath.indexOf("cheat"), 1);
     }
     const game_id = urlPath[urlPath.length - 1];
+    setGameId(game_id);
 
     fetchGame(game_id);
   }, [fetchGame, setGameUrlPath]);

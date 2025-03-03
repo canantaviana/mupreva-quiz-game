@@ -83,7 +83,11 @@ const Game = ({ questions }) => {
         showStats={showStats}
       />
       {showStats ? (
-        <PlayerStats setShowStats={setShowStats} />
+        <PlayerStats
+          setShowStats={setShowStats}
+          questionId={currentQuestion.id}
+          answers={answers}
+        />
       ) : (
         <QuestionCard
           currentQuestion={currentQuestion}

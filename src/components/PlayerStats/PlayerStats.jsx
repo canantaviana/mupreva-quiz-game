@@ -1,14 +1,50 @@
+import { useEffect, useState } from "react";
 import useTranslations from "@/hooks/useTranslations";
+import data_io from "@/utils/data_io";
+import useGame from "@/hooks/useGame";
 
-const PlayerStats = ({ setShowStats }) => {
+const PlayerStats = ({ setShowStats, questionId, answers }) => {
+  const { gameId } = useGame();
   const t = useTranslations();
+  const [stats, setStats] = useState(null);
 
-  const stats = {
-    a: "1.2rem",
-    b: "2.8rem",
-    c: "2.2rem",
-    d: "3.8rem",
-  };
+  useEffect(() => {
+    const getStats = async () => {
+      const playerAnswers = await data_io.obtener_respuesta(questionId, gameId);
+      const answerIds = answers.map((answer) => Number(answer.id));
+      const answerCounts = [0, 0, 0, 0];
+      const answerPercentages = [0, 0, 0, 0];
+
+      // contar vegades que s'ha triat cada resposta
+      playerAnswers.forEach((answer) => {
+        const index = answerIds.indexOf(answer);
+        if (index !== -1) {
+          answerCounts[index]++;
+        }
+      });
+
+      // calcular percentatges
+      for (let i = 0; i < 4; i++) {
+        answerPercentages[i] = (
+          (answerCounts[i] / playerAnswers.length) *
+          10
+        ).toFixed(1);
+      }
+
+      setStats({
+        a: answerPercentages[0],
+        b: answerPercentages[1],
+        c: answerPercentages[2],
+        d: answerPercentages[3],
+      });
+    };
+
+    getStats();
+  }, [answers, gameId, questionId]);
+
+  if (!stats) {
+    return null;
+  }
 
   return (
     <main className="main-content h-100 is-relative">
@@ -19,37 +55,41 @@ const PlayerStats = ({ setShowStats }) => {
             <li>
               <div
                 className="has-background-primary"
-                style={{ height: stats.a }}
+                style={{ height: stats.a + "rem" }}
               ></div>
               <span className="has-text-weight-white has-text-weight-bold has-text-centered">
-                <span className="is-sr-only">{t("answer")} A: </span>12%
+                <span className="is-sr-only">{t("answer")} A: </span>
+                {Number(stats.a) * 10}%
               </span>
             </li>
             <li>
               <div
                 className="has-background-primary"
-                style={{ height: stats.b }}
+                style={{ height: stats.b + "rem" }}
               ></div>
               <span className="has-text-weight-white has-text-weight-bold has-text-centered">
-                <span className="is-sr-only">{t("answer")} B: </span>28%
+                <span className="is-sr-only">{t("answer")} B: </span>
+                {Number(stats.b) * 10}%
               </span>
             </li>
             <li>
               <div
                 className="has-background-primary"
-                style={{ height: stats.c }}
+                style={{ height: stats.c + "rem" }}
               ></div>
               <span className="has-text-weight-white has-text-weight-bold has-text-centered">
-                <span className="is-sr-only">{t("answer")} C: </span>22%
+                <span className="is-sr-only">{t("answer")} C: </span>
+                {Number(stats.c) * 10}%
               </span>
             </li>
             <li>
               <div
                 className="has-background-primary"
-                style={{ height: stats.d }}
+                style={{ height: stats.d + "rem" }}
               ></div>
               <span className="has-text-weight-white has-text-weight-bold has-text-centered">
-                <span className="is-sr-only">{t("answer")} D: </span>38%
+                <span className="is-sr-only">{t("answer")} D: </span>
+                {Number(stats.d) * 10}%
               </span>
             </li>
           </ol>
