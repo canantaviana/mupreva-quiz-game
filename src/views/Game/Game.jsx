@@ -24,6 +24,7 @@ const Game = ({ questions }) => {
   const [hintIds, setHintIds] = useState([]);
   const [timeWildcardUsed, setTimeWildcardUsed] = useState(false);
   const [fiftyWildcardUsed, setFiftyWildcardUsed] = useState(false);
+  const [audienceWildcardUsed, setAudienceWildcardUsed] = useState(false);
   const [showStats, setShowStats] = useState(false);
 
   useEffect(() => {
@@ -43,6 +44,11 @@ const Game = ({ questions }) => {
   function useFiftyWildcard() {
     setFiftyWildcardUsed(true);
     disableHalfAnswers();
+  }
+
+  function useAudienceWildcard() {
+    setAudienceWildcardUsed(true);
+    setShowStats(true);
   }
 
   function checkResult(isCorrect) {
@@ -79,14 +85,15 @@ const Game = ({ questions }) => {
         useTime={useTimeWildcard}
         fiftyUsed={fiftyWildcardUsed}
         useFifty={useFiftyWildcard}
-        setShowStats={setShowStats}
+        audienceWildcardUsed={audienceWildcardUsed}
+        useAudienceWildcard={useAudienceWildcard}
         showStats={showStats}
       />
       {showStats ? (
         <PlayerStats
-          setShowStats={setShowStats}
           questionId={currentQuestion.id}
           answers={answers}
+          setShowStats={setShowStats}
         />
       ) : (
         <QuestionCard

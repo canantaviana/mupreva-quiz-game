@@ -12,7 +12,8 @@ const GameHeader = ({
   useTime,
   fiftyUsed,
   useFifty,
-  setShowStats,
+  audienceWildcardUsed,
+  useAudienceWildcard,
   showStats,
 }) => {
   const { levelCount, levels, title, language, disabledButtons } = useGame();
@@ -56,21 +57,22 @@ const GameHeader = ({
                   src={comodi1}
                   width="37"
                   height="10"
-                  alt="Comodí del 50%"
+                  alt={t("fiftyWildcard")}
                 />
               </button>
             </li>
             <li>
               <button
                 type="button"
-                onClick={() => setShowStats(true)}
+                onClick={useAudienceWildcard}
                 className={showStats ? "active" : ""}
+                disabled={audienceWildcardUsed && !showStats}
               >
                 <img
                   src={comodi2}
                   width="33"
                   height="17"
-                  alt="Comodí del públic"
+                  alt={t("audienceWildcard")}
                 />
               </button>
             </li>
@@ -80,7 +82,7 @@ const GameHeader = ({
                   src={comodi3}
                   width="25"
                   height="29"
-                  alt="Comodí del temps"
+                  alt={t("timeWildcard")}
                 />
               </button>
             </li>
