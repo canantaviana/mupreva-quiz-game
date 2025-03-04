@@ -1,6 +1,6 @@
 const data_io = new (function () {
-  const baseUrl = window.location.host;
-  this.trigger_url = baseUrl + "/lib/data_io/trigger.data_io.php";
+  // this.trigger_url = "http://localhost:8000/trigger.data_io.php";
+  this.trigger_url = "/lib/data_io/trigger.data_io.php";
 
   this.guardar_respuesta = async function (
     pregunta,

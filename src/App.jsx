@@ -9,7 +9,10 @@ function App() {
 
   useEffect(() => {
     setGameUrlPath(window.location.pathname);
-    const urlPath = window.location.pathname.split("/");
+    const urlPath = window.location.pathname
+      .split("/")
+      .filter((segment) => segment !== "");
+
     if (urlPath.includes("cheat")) {
       setCheater(true);
       urlPath.splice(urlPath.indexOf("cheat"), 1);
