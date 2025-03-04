@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="wrapper flow--l">
         <a
           href="https://mupreva.org/"
-          className="is-block flow--s has-text-weight-semibold is-size-7"
+          className="is-inline-block flow--s has-text-weight-semibold is-size-7"
         >
           <img
             src={iconaMupreva}
@@ -24,10 +24,14 @@ const Footer = () => {
         </a>
         <ul className="is-size-7 has-text-weight-semibold is-flex is-align-items-center is-justify-content-center gap-5">
           <li>
-            <a onClick={() => setCurrentView("credits_vlca")}>Crèdits</a>
+            <a onClick={() => setCurrentView("credits_vlca")} href="#">
+              Crèdits
+            </a>
           </li>
           <li>
-            <a onClick={() => setCurrentView("credits_spa")}>Créditos</a>
+            <a onClick={() => setCurrentView("credits_spa")} href="#">
+              Créditos
+            </a>
           </li>
         </ul>
       </div>

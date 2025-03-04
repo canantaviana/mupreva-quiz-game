@@ -11,7 +11,7 @@ const Intro = ({ startGame, logo }) => {
     <>
       <main className="main-content h-100 is-relative">
         <div className="wrapper h-100 is-flex is-flex-direction-column is-justify-content-center is-align-items-center flow--l">
-          {logo ? <img src={logo} alt="" width="95" height="93" /> : null}
+          {logo ? <img src={logo} alt="Logo" width="95" height="93" /> : null}
 
           <div className="intro is-flex">
             <div className="flow--l pr-5 has-text-right">
@@ -21,7 +21,11 @@ const Intro = ({ startGame, logo }) => {
                 </h1>
                 <h2 className="fs-20-24 has-text-weight-bold">{title.vlca}</h2>
               </div>
-              <a onClick={() => handleClick("vlca")} className="button">
+              <a
+                onClick={() => handleClick("vlca")}
+                className="button"
+                href="#"
+              >
                 Valencià
               </a>
             </div>
@@ -30,7 +34,7 @@ const Intro = ({ startGame, logo }) => {
                 Concurso-<span className="is-block fs-40-60">Quiz</span>
               </h1>
               <h2 className="fs-20-24 has-text-weight-bold">{title.spa}</h2>
-              <a onClick={() => handleClick("spa")} className="button">
+              <a onClick={() => handleClick("spa")} className="button" href="#">
                 Castellano
               </a>
             </div>

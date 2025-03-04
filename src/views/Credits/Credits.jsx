@@ -25,14 +25,11 @@ const Credits = ({ lang, content }) => {
           {t("credits")}
         </h1>
         {parse(editedContent, { trim: true })}
-        <img
-          src={logoDivalMupreva3x}
-          alt="Diputació de València"
-          className="mt-5"
-        />
+        <img src={logoDivalMupreva3x} alt={t("valencia")} className="mt-5" />
         <a
           onClick={() => setCurrentView("intro")}
-          aria-label="Tornar a la pàgina anterior"
+          aria-label={t("back")}
+          href="#"
         >
           <svg width="28" height="28" xmlns="http://www.w3.org/2000/svg">
             <path

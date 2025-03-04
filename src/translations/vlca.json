@@ -5,5 +5,10 @@
   "stats-sr-description": "Percentatge per cada resposta",
   "answer": "Resposta",
   "thanks": "Gràcies per jugar!",
-  "museum": "Museu de Prehistòria de València"
+  "museum": "Museu de Prehistòria de València",
+  "fiftyWildcard": "Comodí del 50%",
+  "audienceWildcard": "Comodí del públic",
+  "timeWildcard": "Comodí de temps",
+  "valencia": "Diputació de València",
+  "back": "Tornar a la pàgina anterior"
 }

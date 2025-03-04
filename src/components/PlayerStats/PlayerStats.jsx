@@ -97,6 +97,7 @@ const PlayerStats = ({ setShowStats, questionId, answers }) => {
             <a
               onClick={() => setShowStats(false)}
               className="button button--lg"
+              href="#"
             >
               OK
             </a>
