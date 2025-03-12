@@ -13,10 +13,10 @@ function App() {
       .split("/")
       .filter((segment) => segment !== "");
 
-    if (urlPath.includes("cheat")) {
-      setCheater(true);
-      urlPath.splice(urlPath.indexOf("cheat"), 1);
-    }
+    // if (urlPath.includes("cheat")) {
+    //   setCheater(true);
+    //   urlPath.splice(urlPath.indexOf("cheat"), 1);
+    // }
     const game_id = urlPath[urlPath.length - 1];
     setGameId(game_id);
 
