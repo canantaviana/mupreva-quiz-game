@@ -28,7 +28,9 @@ export const cleanData = (rawData) => {
       if (imgElement.title === "fondo") {
         gameData.backgroundImage[lang] = IMAGE_URL + imgElement.image;
       } else if (imgElement.title === "logo") {
-        gameData.logoImage[lang] = IMAGE_URL + imgElement.image;
+        gameData.logoImage[lang] =
+          IMAGE_URL +
+          imgElement.image.replace("1.5MB", "original").replace(".jpg", ".png");
       }
     });
 
