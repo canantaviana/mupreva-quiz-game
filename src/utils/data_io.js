@@ -1,6 +1,7 @@
+const base_path = import.meta.env.BASE_URL || '/';
+
 const data_io = new (function () {
-  // this.trigger_url = "http://localhost:8000/trigger.data_io.php";
-  this.trigger_url = "/lib/data_io/trigger.data_io.php";
+  this.trigger_url = `${base_path}lib/data_io/trigger.data_io.php`;
 
   this.guardar_respuesta = async function (
     pregunta,
