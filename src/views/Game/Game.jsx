@@ -7,7 +7,10 @@ import GameHeader from "@/components/GameHeader/GameHeader";
 import QuestionCard from "@/components/QuestionCard/QuestionCard";
 import PlayerStats from "@/components/PlayerStats/PlayerStats";
 
-const Game = ({ questions }) => {
+import seleccionFx from "@/assets/sounds/seleccion.mp3"
+import perderFx from "@/assets/sounds/perder.mp3"
+
+const Game = ({ questions, playSound }) => {
   const { answers, correctAnswerId, loading, fetchAnswers } = useDedalo();
   const {
     setCurrentView,
@@ -34,21 +37,25 @@ const Game = ({ questions }) => {
 
   function onTimeUp() {
     setCurrentView("thanks");
+    playSound(perderFx);
   }
 
   function useTimeWildcard() {
     addTime(30);
     setTimeWildcardUsed(true);
+    playSound(seleccionFx);
   }
 
   function useFiftyWildcard() {
     setFiftyWildcardUsed(true);
     disableHalfAnswers();
+    playSound(seleccionFx);
   }
 
   function useAudienceWildcard() {
     setAudienceWildcardUsed(true);
     setShowStats(true);
+    playSound(seleccionFx);
   }
 
   function checkResult(isCorrect) {
@@ -102,6 +109,7 @@ const Game = ({ questions }) => {
           correctAnswerId={correctAnswerId}
           checkResult={checkResult}
           hintIds={hintIds}
+          playSound={playSound}
         />
       )}
     </>

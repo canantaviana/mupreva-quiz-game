@@ -4,6 +4,9 @@ import { delay } from "@/utils/lib";
 import data_io from "../../utils/data_io";
 import useGame from "@/hooks/useGame";
 
+import ganarFx from "@/assets/sounds/ganar.mp3"
+import perderFx from "@/assets/sounds/perder.mp3"
+
 const SHOW_RESULT_DELAY_MS = 1000;
 const NEXT_QUESTION_DELAY_MS = 2000;
 
@@ -13,6 +16,7 @@ const QuestionCard = ({
   correctAnswerId,
   checkResult,
   hintIds,
+  playSound,
 }) => {
   const [answerStates, setAnswerStates] = useState(
     answers.map((answer) => ({ id: answer.id, state: "idle" }))
@@ -53,6 +57,13 @@ const QuestionCard = ({
     await delay(SHOW_RESULT_DELAY_MS);
 
     const isCorrect = selectedAnswerId === correctAnswerId;
+
+    if (isCorrect) {
+      playSound(ganarFx);
+    } else {
+      playSound(perderFx);
+    }
+
     const finalStates = updatedStates.map((answerState) => {
       if (answerState.id === selectedAnswerId) {
         return { ...answerState, state: isCorrect ? "correct" : "incorrect" };

@@ -1,9 +1,18 @@
+import { useEffect } from "react";
 import useGame from "@/hooks/useGame";
 import useCountdown from "../../hooks/useCountdown";
+import inicioFx from "@/assets/sounds/inicio.mp3"
 
 const GameCountdown = () => {
   const { setCurrentView } = useGame();
   const { count } = useCountdown(3, () => setCurrentView("game"));
+
+  useEffect(() => {
+    const audio = new Audio(inicioFx);
+    audio.preload = "auto";
+    audio.volume = 0.5;
+    audio.play().catch(error => console.log("Autoplay blocked:", error));
+  }, [])
 
   return (
     <main className="main-content h-100 is-relative">

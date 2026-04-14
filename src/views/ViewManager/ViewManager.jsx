@@ -19,6 +19,13 @@ const ViewManager = ({ gameData }) => {
       : `url(${defaultBackground})`;
   }, [setTitle, gameData]);
 
+  function playSound(fx) {
+    const audio = new Audio(fx);
+    audio.preload = "auto";
+    audio.volume = 0.5;
+    audio.play().catch(error => console.log("Autoplay blocked:", error));
+  }
+
   const startGame = (lang) => {
     setLanguage(lang);
     setCurrentView("countdown");
@@ -43,9 +50,9 @@ const ViewManager = ({ gameData }) => {
 
       {currentView === "countdown" && <GameCountdown />}
 
-      {currentView === "game" && <Game questions={questions} />}
+      {currentView === "game" && <Game questions={questions} playSound={playSound} />}
 
-      {currentView === "thanks" && <Thanks />}
+      {currentView === "thanks" && <Thanks playSound={playSound} />}
       {currentView === "credits_vlca" && (
         <Credits lang={"vlca"} content={gameData.credits.vlca} />
       )}

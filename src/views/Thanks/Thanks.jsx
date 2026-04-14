@@ -1,13 +1,22 @@
+import { useEffect } from "react";
 import Footer from "@/components/Footer/Footer";
 import useGame from "@/hooks/useGame";
 import useTranslations from "@/hooks/useTranslations";
 import { useWindowSize } from "react-use";
 import Confetti from "react-confetti";
 
-const Thanks = () => {
+import fanfarriaFx from "@/assets/sounds/fanfarria.mp3"
+
+const Thanks = ({ playSound }) => {
   const { levels, levelCount, win, gameUrlPath } = useGame();
   const t = useTranslations();
   const { width, height } = useWindowSize();
+
+  useEffect(() => {
+    if (win) {
+      playSound(fanfarriaFx);
+    }
+  }, [win, playSound]);
 
   return (
     <>
