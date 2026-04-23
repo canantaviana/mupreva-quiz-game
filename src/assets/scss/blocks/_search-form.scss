@@ -1,0 +1,56 @@
+.search {
+    > button {
+        width: 35px;
+        height: 35px;
+        border: 0;
+        background: none;
+        &[aria-expanded="false"] {
+            svg:last-child {
+                display: none;
+            }
+        }
+        &[aria-expanded="true"] {
+            svg:first-child {
+                display: none;
+            }
+        }
+        &[aria-expanded="true"] {
+            background-color: #fff;
+            border-radius: $radius-rounded;
+        }
+    }
+    form {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #000;
+        padding: var(--space-l);
+        input {
+            width: 15rem;
+            @include tablet {
+                width: 30rem;
+            }
+        }
+        button {
+            background-color: transparent;
+            border: 0;
+            svg {
+                fill: $primary; /*arrelga problema iOS Safari*/
+                filter: invert(1);
+            }
+        }
+    }
+}
+
+// ocultem el form quan està carregant la pàgina
+.js #search:not([aria-hidden="false"]) {
+    display: none;
+}
+
+.main-header:has(#search[aria-hidden="false"]) {
+    background-color: #000;
+    #main-nav {
+        display: none;
+    }
+}

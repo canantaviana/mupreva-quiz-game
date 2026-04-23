@@ -1,0 +1,15 @@
+.agenda-home {
+    h3 {
+        padding-left: var(--space-m);
+        border-left: 1px solid #000;
+        @include touch {
+            hyphens: auto;
+        }
+    }
+    time {
+        span {
+            font-size: 4.25rem;
+            line-height: 1;
+        }
+    }
+}

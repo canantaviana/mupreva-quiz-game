@@ -1,0 +1,15 @@
+.imgLeft-image,
+.imgRight-image {
+    // flex-grow: 5 !important;
+    img {
+        object-fit: cover;
+        width: 100%;
+    }
+}
+.imgLeft-content > * + *,
+.imgRight-content > * + * {
+    margin-top: var(--space-s);
+}
+[class^="sidebar"] > :first-child {
+    flex-grow: 1;
+}

@@ -1,0 +1,15 @@
+.block-item-4 {
+    h2 {
+        line-height: 1.3;
+        // limitem a 2 línies
+        @include tablet {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            flex-basis: 2.5em;
+        }
+    }
+}

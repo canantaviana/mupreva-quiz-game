@@ -1,0 +1,15 @@
+.map-legend {
+    span {
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+    &--gratuit {
+        background-color: #8ef0d2;
+    }
+    &--no-gratuit {
+        background-color: #4275ff;
+    }
+    &--zona {
+        background-color: #f2eabc;
+    }
+}

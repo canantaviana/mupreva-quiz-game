@@ -1,0 +1,11 @@
+.counter-text {
+    line-height: 1;
+}
+.timer {
+    circle:first-child {
+        stroke: rgba($primary, 0.29);
+    }
+    circle:last-child {
+        stroke: $primary;
+    }
+}

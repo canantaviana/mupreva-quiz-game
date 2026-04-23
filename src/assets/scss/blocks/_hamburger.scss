@@ -1,0 +1,10 @@
+.hamburger {
+    cursor: default;
+    position: absolute;
+    z-index: 1;
+    top: 5.2rem;
+    right: var(--space-m);
+    @include desktop {
+        display: none;
+    }
+}

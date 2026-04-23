@@ -1,0 +1,16 @@
+.bordered-title {
+    &::before {
+        content: "";
+        width: 8.5rem;
+        height: 1px;
+        background-color: #000;
+        display: block;
+        margin-bottom: 2rem;
+    }
+}
+h1.bordered-title {
+    &::before {
+        width: 2.5rem;
+        margin-bottom: 1rem;
+    }
+}

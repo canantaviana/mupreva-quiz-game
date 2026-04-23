@@ -1,0 +1,19 @@
+.scrolltop {
+    .js & {
+        opacity: 0;
+    }
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    bottom: var(--space-l);
+    right: var(--space-l);
+    transition: opacity 0.3s ease-in-out;
+    z-index: 2;
+    &.visible {
+        opacity: 1;
+    }
+    @include touch {
+        transform: scale(0.6);
+        transform-origin: 100%;
+    }
+}

@@ -1,0 +1,23 @@
+.calendar {
+    th,
+    td {
+        border: 0;
+        text-align: center !important;
+        vertical-align: middle;
+    }
+    thead button {
+        background: none;
+        border: 0;
+    }
+    .day {
+        background-color: $red;
+        color: #fff;
+        border-radius: $radius-rounded;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 2rem;
+        height: 2rem;
+    }
+}

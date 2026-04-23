@@ -1,0 +1,8 @@
+body:has(footer),
+body:has(header) {
+    display: flex;
+    flex-direction: column;
+    main {
+        flex-grow: 1;
+    }
+}

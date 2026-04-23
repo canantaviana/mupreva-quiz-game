@@ -1,0 +1,89 @@
+.simple-accordion {
+    border-bottom: 1px solid $primary;
+    &__title {
+        font-size: var(--step-0);
+        font-weight: 700;
+        text-transform: none;
+        letter-spacing: 0 !important;
+        &:first-of-type button {
+            border-top: 0;
+        }
+    }
+    &__header {
+        all: inherit;
+        border: 0;
+        width: 100%;
+        border-top: 1px solid $primary;
+        padding: var(--space-m) 0;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        &:hover,
+        &:active {
+            background-color: inherit;
+        }
+        &:focus {
+            @include focus;
+        }
+        &::after {
+            content: "";
+            display: block;
+            width: 20px;
+            height: 12px;
+            flex-shrink: 0;
+            margin-left: auto;
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 8H8v4h4V8ZM8 4H4v4h4V4Zm8 0h-4v4h4V4ZM4 0H0v4h4V0Zm16 0h-4v4h4V0Z' fill='%23000' fill-rule='evenodd'%3E%3C/path%3E%3C/svg%3E");
+        }
+        &[aria-expanded="true"]::after {
+            transform: rotate(180deg);
+        }
+    }
+    &__panel {
+        display: block;
+        overflow: hidden;
+        opacity: 1;
+        transition:
+            visibility 0s ease,
+            max-height 1s ease,
+            opacity 1s ease;
+        max-height: 80em;
+        visibility: visible;
+        transition-delay: 0s;
+        margin: 0;
+        padding: 0;
+        padding: 0 var(--space-xl) 0 var(--space-s);
+        &[aria-hidden="true"] {
+            display: block;
+            opacity: 0;
+            max-height: 0;
+            visibility: hidden;
+            transition-delay: 1s, 0s, 0s;
+        }
+
+        > * {
+            font-size: var(--step--1);
+            margin-bottom: var(--space-s);
+        }
+    }
+}
+
+// .simple-accordion__panel[aria-hidden="true"] {
+// }
+
+// /* title opened */
+// .simple-accordion__header[aria-expanded="true"] {
+//     // content: "- ";
+// }
+// /* title closed */
+// .simple-accordion__header[aria-expanded="false"] {
+//     // content: "+ ";
+// }
+
+// /* title selected */
+// .simple-accordion__header[aria-selected="true"] {
+//     // content: " (sel)";
+// }
+// /* title non selected */
+// .simple-accordion__header[aria-selected="false"] {
+//     // content: " (unselc)";
+// }

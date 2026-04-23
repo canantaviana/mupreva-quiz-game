@@ -1,0 +1,30 @@
+.highlighted-link {
+    a {
+        // font-size: var(--step--1);
+        color: $black;
+        font-weight: 500;
+        // border: solid $grey;
+        // border-width: 1px 0;
+        display: inline-flex;
+        gap: var(--space-s);
+        align-items: center;
+        // padding: var(--space-m) var(--space-s);
+        text-wrap: balance;
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+        &::after {
+            content: "";
+            display: block;
+            width: 52px;
+            height: 60px;
+            border-left: 1px solid #000;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='30' height='27'%3E%3Cpath transform='matrix(1.19249e-08 1 -1 1.19249e-08 28.4341 0.00050354)' d='M0 13L2.5882905 15.58829L11.170388 7.0061927L11.170388 28.434603L14.829612 28.434603L14.829612 7.0061927L23.411709 15.58829L26 13L13 0L0 13Z'/%3E%3C/svg%3E%0A");
+            background-position: 100% 50%;
+            // background-color: aqua;
+            background-repeat: no-repeat;
+            margin-left: auto;
+        }
+    }
+}
