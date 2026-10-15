@@ -5,6 +5,7 @@ import GameCountdown from "@/components/GameCountdown/GameCountdown";
 import Game from "@/views/Game/Game";
 import Thanks from "@/views/Thanks/Thanks";
 import Credits from "@/views/Credits/Credits";
+import SoundToggle from "@/components/SoundToggle/SoundToggle";
 import defaultBackground from "@/assets/img/background.jpg";
 
 const ViewManager = ({ gameData }) => {
@@ -18,13 +19,6 @@ const ViewManager = ({ gameData }) => {
       ? `url(${gameData.backgroundImage.vlca})`
       : `url(${defaultBackground})`;
   }, [setTitle, gameData]);
-
-  function playSound(fx) {
-    const audio = new Audio(fx);
-    audio.preload = "auto";
-    audio.volume = 0.5;
-    audio.play().catch(error => console.log("Autoplay blocked:", error));
-  }
 
   const startGame = (lang) => {
     setLanguage(lang);
@@ -50,15 +44,17 @@ const ViewManager = ({ gameData }) => {
 
       {currentView === "countdown" && <GameCountdown />}
 
-      {currentView === "game" && <Game questions={questions} playSound={playSound} />}
+      {currentView === "game" && <Game questions={questions} />}
 
-      {currentView === "thanks" && <Thanks playSound={playSound} />}
+      {currentView === "thanks" && <Thanks />}
       {currentView === "credits_vlca" && (
         <Credits lang={"vlca"} content={gameData.credits.vlca} />
       )}
       {currentView === "credits_spa" && (
         <Credits lang={"spa"} content={gameData.credits.spa} />
       )}
+
+      <SoundToggle />
     </>
   );
 };

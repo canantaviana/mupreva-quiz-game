@@ -4,7 +4,7 @@ import { cleanData, cleanAnswers } from "../utils/cleanData";
 import useGame from "@/hooks/useGame";
 
 const API_URL =
-  "https://pre-dedalo.mupreva.org/dedalo6-pre/publication/server_api/v1/json/";
+  "https://dedalo.mupreva.org/dedalo6/publication/server_api/v1/json/";
 const API_DB_NAME = "web_tangible_heritage";
 const API_CODE = "lsi8wM5s$4KueñwkoPwgs";
 

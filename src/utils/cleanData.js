@@ -1,5 +1,5 @@
 export const cleanData = (rawData) => {
-  const IMAGE_URL = "https://pre-dedalo.mupreva.org";
+  const IMAGE_URL = "https://dedalo.mupreva.org";
 
   const gameData = {
     backgroundImage: {},
@@ -10,7 +10,8 @@ export const cleanData = (rawData) => {
     credits: {},
   };
 
-  const result = rawData.result;
+  // no answer from the API (network or server error)
+  const result = rawData && rawData.result;
 
   if (!result || result.length != 2) {
     return null;
@@ -65,7 +66,8 @@ export const cleanAnswers = (rawData) => {
     correct: null,
   };
 
-  rawData.result.forEach((answerElement) => {
+  // no answer from the API: no answers instead of an error
+  ((rawData && rawData.result) || []).forEach((answerElement) => {
     if (
       answerElement.type_data !== '["4"]' &&
       answerElement.type_data !== '["5"]'

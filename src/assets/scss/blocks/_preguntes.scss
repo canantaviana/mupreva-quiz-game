@@ -31,7 +31,8 @@ html {
       background-image: url("src/assets/img/pregunta-bg@2x.png");
     }
     background-size: 100% 100%;
-    height: var(--fluid-112-176);
+    // min-height: a longer question or enlarged text makes the box grow instead of overflowing it
+    min-height: var(--fluid-112-176);
     padding: 1em 12%;
     @media (min-width: 600px) {
       margin-bottom: 2rem;
@@ -59,7 +60,7 @@ html {
     }
     button {
       width: 100%;
-      height: var(--fluid-64-100);
+      min-height: var(--fluid-64-100);
       text-wrap: balance;
       hyphens: auto;
       border: 0;
@@ -82,13 +83,28 @@ html {
       &[disabled] {
         opacity: 0.4;
       }
+      // marked answers: dark text and letter on the orange/green/red boxes
+      // (white letter was 1.8–2.4:1 and #363636 text 4:1 on red; black is above 6:1 on all three)
       &.btn-seleccio,
       &.btn-encert,
       &.btn-errada {
+        color: #000 !important;
         &::before {
-          color: #fff;
-          border-right-color: rgba(#fff, 0.4);
+          color: #000;
+          border-right-color: rgba(#000, 0.4);
         }
+      }
+      // right and wrong are also told by a sign, not only by green and red (1.4.1)
+      &.btn-encert::after,
+      &.btn-errada::after {
+        margin-left: auto;
+        font-size: 1.5em;
+        font-weight: 900;
+        // the state is already said in words (hidden text): the sign is not read
+        content: "\2713" / "";
+      }
+      &.btn-errada::after {
+        content: "\2717" / "";
       }
       &.btn-seleccio {
         background-image: url("src/assets/img/caixeta-quiz-resposta-seleccio.png");
@@ -167,4 +183,18 @@ html {
       }
     }
   }
+}
+
+// result of the answer, in words
+.preguntes__feedback {
+  min-height: 1.5em;
+  margin-top: 1rem;
+  // room for the fixed sound button in the bottom corner
+  padding-inline: 3.5rem;
+  color: #fff;
+}
+
+// headings that only take the focus to be read (not controls): no focus ring
+[tabindex="-1"]:focus {
+  outline: none;
 }

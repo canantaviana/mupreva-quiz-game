@@ -1,0 +1,36 @@
+// ------------------------------------------------------------------------------
+// Ampliació fins al 400 % i pantalles baixes · WCAG 1.4.4, 1.4.10
+// ------------------------------------------------------------------------------
+// Each view fills the window and centres its content (main.h-100 > .wrapper.h-100). With a fixed
+// height the content that did not fit spilled over the header (covering the wildcards) and above
+// the top of the page, where it could not be scrolled to. Now the view grows with its content and
+// the page scrolls; when everything fits, it looks as before.
+
+// <body class="h-100">: at least the window's height, but it grows with the page
+// (otherwise its black background ended after the first screen)
+body.h-100 {
+  height: auto;
+  min-height: 100%;
+}
+.main-content.h-100 {
+  height: auto;
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  > .wrapper.h-100 {
+    height: auto;
+    flex: 1 0 auto;
+    // "safe": when the content is taller than the space, it starts at the top instead of being cut
+    &.is-justify-content-center {
+      justify-content: safe center !important;
+    }
+  }
+}
+
+// narrow windows: room at the end of the page so the fixed sound button (bottom right)
+// does not cover the last links once scrolled to the bottom
+@media (max-width: 30em) and (min-height: 30.0625em) {
+  #root {
+    padding-bottom: 4rem;
+  }
+}

@@ -46,6 +46,7 @@
 // @import "utilities/full-link";
 @import "utilities/gap";
 @import "utilities/h-100";
+@import "base/reflow";
 // @import "utilities/is-bordered";
 @import "utilities/is-relative";
 // @import "utilities/letter-spacing";
@@ -157,3 +158,6 @@
 // // @import "blocks/page-header";
 // // @import "blocks/restaurants-list";
 // // @import "blocks/resultats-cercador";
+
+// Colors forçats (contrast alt del sistema): ha d'anar l'últim
+@import "base/forced-colors";

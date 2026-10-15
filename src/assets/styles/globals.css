@@ -1,5 +1,7 @@
 #root {
-  height: 100%;
+  /* min-height: the page grows when the content does not fit (400% zoom, low windows) */
+  min-height: 100%;
+  flex: 1 0 auto; /* the body is a flex column: do not shrink below the content */
   display: flex;
   flex-direction: column;
 }

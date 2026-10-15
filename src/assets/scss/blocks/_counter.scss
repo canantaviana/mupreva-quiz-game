@@ -1,4 +1,5 @@
 .counter {
     font-weight: 700;
-    font-size: 18.75rem;
+    // never taller than the window (400% zoom, landscape phones)
+    font-size: min(18.75rem, 60vh);
 }

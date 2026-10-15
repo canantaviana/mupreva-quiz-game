@@ -23,15 +23,16 @@ const Footer = () => {
           {t("museum")}
         </a>
         <ul className="is-size-7 has-text-weight-semibold is-flex is-align-items-center is-justify-content-center gap-5">
+          {/* buttons (they change the screen, they don't go to a page), each in its language */}
           <li>
-            <a onClick={() => setCurrentView("credits_vlca")} href="#">
+            <button type="button" className="button-link" lang="ca" onClick={() => setCurrentView("credits_vlca")}>
               Crèdits
-            </a>
+            </button>
           </li>
           <li>
-            <a onClick={() => setCurrentView("credits_spa")} href="#">
+            <button type="button" className="button-link" lang="es" onClick={() => setCurrentView("credits_spa")}>
               Créditos
-            </a>
+            </button>
           </li>
         </ul>
       </div>

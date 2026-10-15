@@ -1,0 +1,28 @@
+// ------------------------------------------------------------------------------
+// Colors forçats (contrast alt del sistema) · WCAG 1.1.1, 1.4.11
+// ------------------------------------------------------------------------------
+// The system theme replaces text and background colours, but not the colours inside images.
+@media (forced-colors: active) {
+  // wildcards: dark icons on a purple circle. The circle turned black, hiding the icons;
+  // keep the original colours (about 6:1) with a border in the theme's button colour
+  .comodins button {
+    forced-color-adjust: none;
+    border: 2px solid ButtonText;
+  }
+  // close cross of the credits: drawn in white, lost on light themes
+  .credits__close svg path {
+    fill: CanvasText;
+  }
+  // white logos (credits and footer): white on dark themes...
+  .credits img,
+  footer img {
+    filter: brightness(0) invert(1);
+  }
+}
+// ...and black on light themes, where white disappears
+@media (forced-colors: active) and (prefers-color-scheme: light) {
+  .credits img,
+  footer img {
+    filter: brightness(0);
+  }
+}

@@ -6,13 +6,17 @@ body {
   background-repeat: no-repeat;
   background-position: 50%;
   background-size: cover;
+  // when the page is taller than the window (400% zoom), the image and its dark overlay stay
+  // behind the content instead of ending after the first screen on a white background
+  background-attachment: fixed;
+  background-color: #000;
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     // background-image: url("src/assets/img/background@2x.jpg");
   }
   &::before {
     content: "";
     display: block;
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     width: 100%;

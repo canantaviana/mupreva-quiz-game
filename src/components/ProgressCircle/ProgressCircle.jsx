@@ -4,7 +4,7 @@ const ProgressCircle = ({ count, total }) => {
 
   return (
     <div className="timer">
-      <svg width="30" height="30" viewBox="0 0 30 30" className="is-block">
+      <svg width="30" height="30" viewBox="0 0 30 30" className="is-block" aria-hidden="true" focusable="false">
         <circle cx="15" cy="15" r="12.5" fill="none" strokeWidth="5" />
         <circle
           id="progress-circle"

@@ -1,6 +1,8 @@
 .loading {
     letter-spacing: -0.63px;
-    width: 9rem;
+    // two languages: Carregant / Cargando
+    width: auto;
+    min-width: 9rem;
     &:after {
         overflow: hidden;
         display: inline-block;
@@ -20,5 +22,12 @@
 @-webkit-keyframes ellipsis {
     to {
         width: 1.25em;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .loading:after {
+        animation: none;
+        width: auto;
     }
 }

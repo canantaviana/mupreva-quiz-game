@@ -16,3 +16,44 @@ footer {
         }
     }
 }
+
+// buttons that look like the footer links
+.button-link {
+    background: none;
+    border: 0;
+    padding: 0;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+// sound on/off, on every screen
+.sound-toggle {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 10;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+    border-radius: $radius-rounded;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    &[aria-pressed="true"] {
+        background-color: $primary;
+        border-color: $primary;
+        color: #000;
+    }
+    // very low windows (400% zoom): fixed in a corner it covered answers and buttons
+    @media (max-height: 30em) {
+        position: static;
+        margin: 1rem auto;
+    }
+}

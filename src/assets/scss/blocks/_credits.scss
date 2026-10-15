@@ -13,10 +13,14 @@
     ul {
         --gap: var(--space-2xs);
     }
-    a:has(> svg) {
+    .credits__close {
         display: block;
         position: absolute;
         top: var(--space-s);
         right: var(--space-l);
+        background: none;
+        border: 0;
+        padding: 0.5rem;
+        cursor: pointer;
     }
 }
